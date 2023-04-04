@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-export const setData = async (setStudents) => {
+
+
+export const setData = async (data) => {
     try {
-        const response = await axios.post(`http://localhost:8080/student`);
-        setStudents(response.data);
+      const response = await axios.post(`http://localhost:8080/student`, data);
+      return response.data;
     } catch (err) {
-        console.log(err);
+      console.log(err);
     }
-}
+  };
