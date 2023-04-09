@@ -13,6 +13,14 @@ export const Table = (props) => {
             }
         });
     };
+
+    const handlerDeleteStudent = (id,data) => {
+        navigate(`/delete-student/${id}`, {
+            state: {
+                data: data,
+            }
+        });
+    };
     return (
         <div>
             <h1>Student details</h1>
@@ -33,7 +41,10 @@ export const Table = (props) => {
                                 <td><Row2 phoneNumber={student.PhoneNumber} /></td>
                                 <td><Row3 email={student.Email} /></td>
                                 <td><Row4 id={student.Id} /></td>
+                                <div className='button_continer'>
                                 <div className='edit_button' onClick={() =>  handlerEditStudent(student.Id,student)}>Edit</div>
+                                <div className='delete_button ' onClick={() =>  handlerDeleteStudent(student.Id,student)}>Delete</div>
+                                </div>
                             </tr>
                         ))}
                     </tbody>

@@ -36,3 +36,26 @@ td {
     background-color: rgb(255, 255, 255);
     color: rgb(44, 183, 66);
 }
+.delete_button  {
+    background-color: red;  
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 1px solid rgb(44, 183, 66);
+    width: 100px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.delete_button :hover {
+    background-color: rgb(255, 255, 255);
+    color: red;
+}
+.button_continer {
+    display: flex;
+    margin-left: 10px;
+}
