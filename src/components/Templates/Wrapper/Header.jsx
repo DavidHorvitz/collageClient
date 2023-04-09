@@ -11,7 +11,7 @@ const Header = (props) => {
 
                 <div className="button_Container">
                     <div className="add_to_cart_button" onClick={() => navigate("/")}>List of Students</div>
-                    <div className="add_to_cart_button" onClick={() => navigate("/students")}>Add a new Student</div>
+                    <div className="add_to_cart_button" onClick={() => navigate("/add-student")}>Add a new Student</div>
                 </div>
         </header>
     )

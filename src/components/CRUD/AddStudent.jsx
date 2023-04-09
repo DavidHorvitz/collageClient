@@ -26,6 +26,7 @@ const AddStudent = (props) => {
 
         try {
             const response = await setData(objData);
+            console.log(response);
         } catch (err) {
             console.log(err);
         }
@@ -66,9 +67,9 @@ const AddStudent = (props) => {
                         <label className="input_label">Email</label>
                     </div>
 
-                    <button  className="card_button" onClick={saveData} >
-                        Save New Student
-                    </button>
+                    <button className="card_button" onClick={() => saveData() && navigate("/")}  > Save New Student </button>
+
+
                 </div>
             </div>
         </div>
