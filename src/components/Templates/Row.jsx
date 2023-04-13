@@ -3,7 +3,7 @@ import row from "./row.css"
 
 
 export function Row1(props) {
-    const name = props.name
+    const name = props.name;
     return (
         <div id="row1">{name}</div>
     )
@@ -26,7 +26,7 @@ export function Row3(props) {
 export function Row4(props) {
     const id = props.id
     return (
-        <div id="row4">{id} </div>
+        <div id="row4">{id}</div>
 
     )
 }
