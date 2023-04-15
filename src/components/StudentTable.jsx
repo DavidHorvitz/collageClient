@@ -7,11 +7,14 @@ import { useNavigate } from "react-router-dom";
 
 export const StudentTable = (props) => {
     const navigate = useNavigate();
-    const students = props.students
+    const students = props.students;
 
-    if (!students) {
+    if (!students || !Array.isArray(students)) {
         return null;
     }
+    // if (!students) {
+    //     return null;
+    // }
     const handlerEditStudent = (id, data) => {
         navigate(`/edit-student/${id}`, {
             state: {
@@ -59,6 +62,7 @@ export const StudentTable = (props) => {
                             </td>
                         </tr>
                     ))}
+
                 </tbody>
             </table>
         </div>

@@ -1,4 +1,5 @@
 import { GET_STUDENTS } from '../actions/getData';
+import { SET_STUDENTS } from '../actions/setData';
 
 const initialState = {
     students: []
@@ -11,6 +12,11 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 students: action.payload
             };
+        case SET_STUDENTS:
+        return {
+        ...state,
+        students: [...state.students, action.payload]//This is how you add the new member to the existing array and not create a new array
+        };
         default:
             return state;
     }

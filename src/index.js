@@ -8,10 +8,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk';
 import reducers from './redux/reducers/studentReducers';
 import { Provider } from 'react-redux';
-// import { composeWithDevTools } from 'redux-devtools-extension';
-// import { createStore, applyMiddleware } from 'redux';
 
-// const store = createStore(reducers, applyMiddleware(thunk));
 
 const store = configureStore({
   reducer: reducers,
