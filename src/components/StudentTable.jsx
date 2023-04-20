@@ -2,19 +2,17 @@ import React from "react";
 import table from "./studentTable.css";
 import { Row1, Row2, Row3, Row4 } from "./Templates/Row";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 
-export const StudentTable = (props) => {
+export const StudentTable = () => {
     const navigate = useNavigate();
-    const students = props.students;
-
-    if (!students || !Array.isArray(students)) {
+    const students = useSelector(state => state.students);
+  
+    if (!students) {
         return null;
     }
-    // if (!students) {
-    //     return null;
-    // }
     const handlerEditStudent = (id, data) => {
         navigate(`/edit-student/${id}`, {
             state: {
