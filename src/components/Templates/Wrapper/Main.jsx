@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import main from './wrapper.css'
 import { StudentTable } from "../../StudentTable";
-import AddStudent from "../../CRUD/AddStudent";
-import EditStudent from "../../CRUD/EditStudent";
-import DeleteStudent from "../../CRUD/DeleteStudent";
+import AddStudent from "../../CRUD/Student/AddStudent";
+import EditStudent from "../../CRUD/Student/EditStudent";
+import DeleteStudent from "../../CRUD/Student/DeleteStudent";
+import { CourseTable } from "../../CRUD/Course/CourseTable";
 import { Route, Routes } from "react-router-dom";
-import { getStudents } from "../../../redux/actions/getData";
 import { useDispatch } from 'react-redux';
+import { getStudents } from "../../../store/actions/student/getStudent";
 
 
 const Main = () => {
@@ -15,7 +16,6 @@ const Main = () => {
     useEffect(() => {
         dispatch(getStudents());
     }, [dispatch]);
-    // In this example, we use the useSelector hook to access the students property from the Redux store. We also use the useEffect hook to dispatch the getStudents action when the component mounts. Finally, we render the list of students in the component.
 
     return (
         <main id="main">
@@ -24,6 +24,7 @@ const Main = () => {
                 <Route path="/add-student" element={<AddStudent />} />
                 <Route path="/edit-student/:id" element={<EditStudent />} />
                 <Route path="/delete-student/:id" element={<DeleteStudent />} />
+                <Route path="/all-courses" element={<CourseTable />} />
             </Routes>
         </main>
     )

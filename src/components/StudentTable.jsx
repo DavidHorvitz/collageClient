@@ -8,10 +8,19 @@ import { useSelector } from "react-redux";
 
 export const StudentTable = () => {
     const navigate = useNavigate();
-    const students = useSelector(state => state.students);
-  
+    //the state => state.student.students came from the store state in the index file
+    const students = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
+    const loading = useSelector((state) => state.student.loading);
+    const error = useSelector((state) => state.student.error);
     if (!students) {
         return null;
+    }
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>;
     }
     const handlerEditStudent = (id, data) => {
         navigate(`/edit-student/${id}`, {
@@ -20,7 +29,6 @@ export const StudentTable = () => {
             }
         });
     };
-
     const handlerDeleteStudent = (id, data) => {
         navigate(`/delete-student/${id}`, {
             state: {
@@ -28,6 +36,7 @@ export const StudentTable = () => {
             }
         });
     };
+
     return (
         <div>
             <h1>Student details</h1>

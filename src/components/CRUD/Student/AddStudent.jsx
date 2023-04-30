@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import classes from './model.css';
-import ButtonClose from "../Templates/ButtonClose/ButtonClose";
+import ButtonClose from "../../Templates/ButtonClose/ButtonClose";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 // import { addStudent } from "../../api/setData";
-import { addStudent } from "../../redux/actions/setData";
+// import { addStudent } from "../../../redux/actions/student/setStudent";
+import { addStudent } from "../../../store/actions/student/setStudent";
 
-const AddStudent = (props) => {
+const AddStudent = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -28,7 +29,17 @@ const AddStudent = (props) => {
             Email: Email,
         };
 
-        dispatch(addStudent(objData, navigate));
+        // dispatch(addStudent(objData, navigate));
+        //  if (!close) {
+        //     navigate('/');
+        // }
+        dispatch(addStudent(objData))
+  .then(() => {
+    navigate('/');
+  })
+  .catch((err) => {
+    console.error('Failed to add student:', err);
+  });
     };
 
     return (
