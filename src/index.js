@@ -6,28 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk';
-// import studentReducer from './redux/reducers/studentReducer';
-// import courseReducer from './redux/reducers/courseReducer';
 import { Provider } from 'react-redux';
-// import rootReducer from './redux/reducers/index';
-// import store from './store/features';
 import studentReducer from './store/features/studentSlice'
+import courseReducer from './store/features/courseSlice'
 
 
 const store = configureStore({//here I initialize the global store state
   reducer: {
     student: studentReducer,
+    course: courseReducer,
     middleware: [thunk],
   }
 });
-
-// const store = configureStore({
-//   reducer: studentReducer, courseReducer,
-//   // reducer:rootReducer ,
-//   middleware: [thunk],
-//   // enhancers: [composeWithDevTools()],
-// });
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

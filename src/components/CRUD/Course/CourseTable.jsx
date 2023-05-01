@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { DynamicTable } from "../../Templates/Table/DynamicTable";
 
 export const CourseTable = () => {
-   
-  
-    const courses = useSelector(state => state.courses);
-    console.log(courses);
-  if (!courses) {
-    return null;
-  }
+  const courses = useSelector(state => state.course.courses);
 
   return (
     <div>

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import './DynamicTable.css'; // import the CSS file for styling
 
 export const DynamicTable = ({ data }) => {
+  if (!data || data.length === 0) {
+    return <p>No data to display.</p>;
+  }
   const keys = Object.keys(data[0]); // Get the keys from the first object in the data array
 
   return (

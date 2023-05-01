@@ -1,5 +1,3 @@
-// src/redux/slices/studentSlice.js
-
 import { createSlice } from '@reduxjs/toolkit';
 import { getStudents } from '../actions/student/getStudent';
 import { addStudent } from '../actions/student/setStudent';

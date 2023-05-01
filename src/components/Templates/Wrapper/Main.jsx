@@ -6,17 +6,8 @@ import EditStudent from "../../CRUD/Student/EditStudent";
 import DeleteStudent from "../../CRUD/Student/DeleteStudent";
 import { CourseTable } from "../../CRUD/Course/CourseTable";
 import { Route, Routes } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { getStudents } from "../../../store/actions/student/getStudent";
-
 
 const Main = () => {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getStudents());
-    }, [dispatch]);
-
     return (
         <main id="main">
             <Routes>

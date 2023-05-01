@@ -32,7 +32,6 @@ const EditStudent = () => {
         //here i sand to the API request an object with tow properties, id to the url and the data that will be changed
         //you can see that in editStudent Api
         dispatch(editStudent({ id, updatedStudent: updateDateObject }))
-            // dispatch(editStudent(id, updateDateObject))
             .then(() => {
                 navigate('/');
             })
