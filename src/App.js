@@ -11,8 +11,8 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getStudents());
-    dispatch(getCourses());
   }, [dispatch]);
+  dispatch(getCourses());
   return (
     <div className="App">
       <MainApp />

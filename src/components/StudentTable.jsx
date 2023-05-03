@@ -2,12 +2,15 @@ import React from "react";
 import table from "./studentTable.css";
 import { Row1, Row2, Row3, Row4 } from "./Templates/Row";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getStudentWithCourses } from "../store/actions/student/getStudentWithCourses";
+import Spinner from "./Templates/Spinner/Spinner";
 
 
 
 export const StudentTable = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     //the state => state.student.students came from the store state in the index file
     const students = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
     const loading = useSelector((state) => state.student.loading);
@@ -16,7 +19,10 @@ export const StudentTable = () => {
         return null;
     }
     if (loading) {
-        return <p>Loading...</p>;
+        return <div>
+            <Spinner />
+            <p>Loading...</p>;
+        </div>
     }
 
     if (error) {
@@ -35,6 +41,19 @@ export const StudentTable = () => {
                 data: data,
             }
         });
+    };
+    const handlerStudentCourses = (id, data) => {
+        dispatch(getStudentWithCourses(id))
+            .then(() => {
+                navigate(`/student-with-courses/${id}`, {
+                    state: {
+                        data: data,
+                    }
+                });
+            })
+            .catch((err) => {
+                console.error('Failed to add student:', err);
+            });
     };
 
     return (
@@ -65,6 +84,11 @@ export const StudentTable = () => {
                             <td>
                                 <div className='button_container'>
                                     <div className='delete_button' onClick={() => handlerDeleteStudent(student.Id, student)}>Delete</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div className='button_container'>
+                                    <div className='property_button' onClick={() => handlerStudentCourses(student.Id, student)}>Courses</div>
                                 </div>
                             </td>
                         </tr>
