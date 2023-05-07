@@ -2,9 +2,9 @@
 
 .table {
     border-collapse: collapse;
-    width: 100%;
-    max-width: 400px;
-    /* margin: 0 auto; */
+    width: 90%;
+    /* max-width: 400px; */
+    margin: 0 auto;
 }
 
 th,
@@ -13,10 +13,13 @@ td {
     text-align: left;
     border: 1px solid #ddd;
     text-align: center;
-    
+    font-size: small;
+    font-style: italic;
     background-color: #f2f2f2;
 }
-
+.action{
+    width: 300px;
+}
 .edit_button {
     background-color: rgb(44, 183, 66);
     color: white;
