@@ -1,5 +1,5 @@
 import React from "react";
-import footer from './wrapper.css'
+import './wrapper.css'
 
 export const Footer = ()=>{
     return(

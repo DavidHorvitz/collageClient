@@ -1,4 +1,4 @@
-import classes from './mainApp.css';
+import './mainApp.css';
 import Header from "./Templates/Wrapper/Header";
 import  Aside  from "./Templates/Wrapper/Aside";
 import Main from './Templates/Wrapper/Main';

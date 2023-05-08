@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import classes from './model.css';
+import '../model.css';
 import ButtonClose from "../../Templates/ButtonClose/ButtonClose";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";

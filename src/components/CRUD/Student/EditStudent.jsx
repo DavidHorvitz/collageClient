@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import classes from './model.css';
+import '../model.css';
 import ButtonClose from "../../Templates/ButtonClose/ButtonClose";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -64,7 +64,7 @@ const EditStudent = () => {
                 <h1 className="card_title">Edit Student</h1>
                 <p className="card_title-info">Pen By David Horvitz</p>
                 <div className="card_form">
-                <div className="input">
+                    <div className="input">
                         <input
                             className={`input_field ${!isNameValid(Name) && "invalid"}`}
                             type="text"

@@ -1,5 +1,5 @@
 import React from "react";
-import aside from './wrapper.css'
+import  './wrapper.css'
 
 const Aside = ()=>{
     return(

@@ -1,5 +1,5 @@
 import React from "react";
-import table from "./studentTable.css";
+import "./studentTable.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentWithCourses } from "../store/actions/student/getStudentWithCourses";
@@ -20,7 +20,6 @@ export const StudentTable = () => {
     if (loading) {
         return <div>
             <Spinner />
-            {/* <p>Loading...</p>; */}
         </div>
     }
 
@@ -53,6 +52,12 @@ export const StudentTable = () => {
             .catch((err) => {
                 console.error('Failed to add student:', err);
             });
+
+
+    }
+
+    const handlerAddStudentToCourse = (id) => {
+        navigate(`/add-student-to-course/${id}`)
     };
 
     return (
@@ -87,6 +92,11 @@ export const StudentTable = () => {
                             <td>
                                 <div className='button_container'>
                                     <div className='property_button' onClick={() => handlerStudentCourses(student.Id, student)}>Courses</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div className='button_container'>
+                                    <div className='add_student_to_course' onClick={() => handlerAddStudentToCourse(student.Id)}>Add to course</div>
                                 </div>
                             </td>
                         </tr>

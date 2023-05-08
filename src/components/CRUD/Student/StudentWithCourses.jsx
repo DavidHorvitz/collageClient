@@ -1,11 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import './studentWithCourses.css'
-import { useNavigate } from "react-router-dom";
 import Spinner from "../../Templates/Spinner/Spinner";
 
 export const StudentWithCourses = () => {
-    const navigate = useNavigate();
     const students = useSelector(state => state.student.studentCourses);
     const loading = useSelector((state) => state.student.loading);
     const error = useSelector((state) => state.student.error);
