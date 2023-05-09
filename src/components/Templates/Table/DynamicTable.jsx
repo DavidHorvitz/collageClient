@@ -1,31 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './DynamicTable.css'; // import the CSS file for styling
+import './DynamicTable.css';
 
-export const DynamicTable = ({ data }) => {
+export const DynamicTable = ({ data, onButtonClickDelete }) => {
   if (!data || data.length === 0) {
     return <p>No data to display.</p>;
   }
-  const keys = Object.keys(data[0]); // Get the keys from the first object in the data array
+  const keys = Object.keys(data[0]);
 
   return (
     <table className="dynamic-table">
       <thead>
         <tr>
-          {/* Render table headers based on the keys */}
           {keys.map((key, index) => (
             <th key={index}>{key}</th>
           ))}
+          <th>Actions</th> {/* Add a header for the button column */}
         </tr>
       </thead>
       <tbody>
-        {/* Render table rows based on the data prop and keys */}
         {data.map((row, rowIndex) => (
-          <tr key={rowIndex}>
-            {/* Render table cells based on the keys */}
+          <tr key={rowIndex}>{/* Remove any whitespace between tags */}
             {keys.map((key, colIndex) => (
               <td key={colIndex}>{row[key]}</td>
             ))}
+            <td>
+               {/* Add a button that calls the onButtonClick function with the current row  */}
+              <button onClick={() => onButtonClickDelete(row)}>Delete</button>
+            </td>
           </tr>
         ))}
       </tbody>
@@ -35,6 +37,7 @@ export const DynamicTable = ({ data }) => {
 
 DynamicTable.propTypes = {
   data: PropTypes.arrayOf(
-    PropTypes.shape({}) // Use a dynamic shape for the objects in the data array
+    PropTypes.shape({})
   ).isRequired,
+  onButtonClickDelete: PropTypes.func.isRequired, // Add a prop type for the button click handler
 };

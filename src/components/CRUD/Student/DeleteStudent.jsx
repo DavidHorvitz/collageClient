@@ -30,7 +30,7 @@ const DeleteStudent = () => {
                 navigate('/');
             })
             .catch((err) => {
-                console.error('Failed to add student:', err);
+                console.error('Failed to Delete student:', err);
             });
     };
 

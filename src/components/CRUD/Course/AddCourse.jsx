@@ -39,7 +39,7 @@ const AddCourse = () => {
         }
         dispatch(addCourse(courseData))
             .then(() => {
-                navigate('/');
+                navigate('/all-courses');
             })
             .catch((err) => {
                 console.error('Failed to add student:', err);
