@@ -6,8 +6,16 @@ export const CourseTable = () => {
   const courses = useSelector(state => state.course.courses);
 
   const navigate = useNavigate();
+  
   const deleteCourse = (id, course) => {
     navigate(`/delete-course/${id}`, {
+      state: {
+        data: course
+      }
+    });
+  };
+  const updateCourse = (id, course) => {
+    navigate(`/edit-course/${id}`, {
       state: {
         data: course
       }
@@ -27,7 +35,8 @@ export const CourseTable = () => {
   return (
     <div>
       <h1>Courses details</h1>
-      <DynamicTable data={tableData} onButtonClickDelete={(course) => deleteCourse(course.Id, course)} />
+      <DynamicTable data={tableData} onButtonClickDelete={(course) => deleteCourse(course.Id, course)} 
+      onButtonClickUpdate={(course) => updateCourse(course.Id, course)}/>
     </div>
   );
 };

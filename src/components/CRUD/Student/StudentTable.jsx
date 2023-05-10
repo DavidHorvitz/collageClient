@@ -2,8 +2,8 @@ import React from "react";
 import "./studentTable.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getStudentWithCourses } from "../store/actions/student/getStudentWithCourses";
-import Spinner from "./Templates/Spinner/Spinner";
+import { getStudentWithCourses } from "../../../store/actions/student/getStudentWithCourses";
+import Spinner from "../../Templates/Spinner/Spinner";
 
 
 

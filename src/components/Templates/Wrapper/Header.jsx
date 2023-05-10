@@ -22,6 +22,7 @@ const Header = () => {
                 <div className="add_to_cart_button" onClick={() => navigate("/add-student")}>Add a new Student</div>
                 <div className="add_to_cart_button" onClick={() => navigate("/add-course")}>Add a new Course</div>
                 <div className="add_to_cart_button" onClick={() => navigate("/all-courses")}>Courses details</div>
+                <div className="add_to_cart_button" onClick={() => navigate("/all-lecturers")}>Lecturers details</div>
             </div>
         </header>
     )

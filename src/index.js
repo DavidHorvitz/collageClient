@@ -7,14 +7,16 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { configureStore } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import studentReducer from './store/features/studentSlice'
-import courseReducer from './store/features/courseSlice'
+import studentReducer from './store/features/studentSlice';
+import courseReducer from './store/features/courseSlice';
+import lecturerReducer from './store/features/lecturerSlice'
 
 
 const store = configureStore({//here I initialize the global store state
   reducer: {
     student: studentReducer,
     course: courseReducer,
+    lecturer: lecturerReducer,
     middleware: [thunk],
   }
 });

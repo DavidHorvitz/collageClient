@@ -5,13 +5,12 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteCourse } from "../../../store/actions/course/deleteCourse";
 
-const DeleteCourse = (props) => {
+const DeleteCourse = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
   const data = location.state?.data || {};
-  console.log(data);
   const [CourseName, setCourseName] = useState(data.Course_Name);
   const [StartingDate, setStartingDate] = useState(data.Starting_Date);
   const [EndDate, setEndDate] = useState(data.End_Date);

@@ -28,7 +28,7 @@ const AddCourse = () => {
 
     useEffect(() => {
         if (!close) {
-            navigate('/');
+            navigate('/all-courses');
         }
     }, [close, navigate]);
 

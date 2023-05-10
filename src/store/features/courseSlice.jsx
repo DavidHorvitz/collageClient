@@ -3,6 +3,7 @@ import { getCourses } from '../actions/course/getCourse';
 import { addStudentToCourse } from '../actions/course/addStudentToCourse';
 import { addCourse } from '../actions/course/setCourse';
 import { deleteCourse } from '../actions/course/deleteCourse';
+import { editCourse } from '../actions/course/editCourse';
 
 
 
@@ -37,6 +38,19 @@ const courseSlice = createSlice({
       .addCase(addStudentToCourse.fulfilled, (state, action) => {
         state.loading = false;
         state.courseWithStudents.push(action.payload);
+      })
+      .addCase(editCourse.fulfilled, (state, action) => {
+        state.loading = false;
+        const updatedCourse = action.payload;
+        const index = state.courses.findIndex(
+          (course) => course.Id === updatedCourse.Id
+        );
+        if (index !== -1) {
+          state.courses[index] = updatedCourse;
+        }
+        if (state.course && state.course.Id === updatedCourse.Id) {
+          state.course = updatedCourse;
+        }
       })
       .addCase(deleteCourse.fulfilled, (state, action) => {
         state.loading = false;
