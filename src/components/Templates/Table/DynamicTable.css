@@ -8,17 +8,16 @@
   
   /* Style for table headers */
   .dynamic-table th {
+    font-style: italic;
     background-color: #f2f2f2;
     padding: 10px;
     font-weight: bold;
-    text-align: left;
     border-bottom: 1px solid #ddd;
   }
   
   /* Style for table rows */
   .dynamic-table td {
     padding: 10px;
-    border-bottom: 1px solid #ddd;
   }
   
   /* Style for alternating row colors */
@@ -26,3 +25,94 @@
     background-color: #f9f9f9;
   }
   
+
+th,
+td ,tr{
+  padding: 8px;
+  border: 3px solid #ddd;
+  text-align: center;
+  font-size: small;
+  background-color: #d3caca;
+}
+
+.edit_button {
+  background-color: rgb(44, 183, 66);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid rgb(44, 183, 66);
+  width: 100px;
+  margin-right: 0px;
+  cursor: pointer;
+}
+
+.edit_button:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(44, 183, 66);
+}
+.delete_button  {
+  background-color: red;  
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid rgb(44, 183, 66);
+  width: 100px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.delete_button:hover {
+  background-color: rgb(255, 255, 255);
+  color: red;
+}
+.property_button  {
+  background-color: rgb(234, 135, 55);  
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid rgb(44, 183, 66);
+  width: 100px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.property_button:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(234, 135, 55);  
+}
+
+.add_student_to_course  {
+  background-color: rgb(55, 73, 234);  
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid rgb(44, 183, 66);
+  width: 100px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.add_student_to_course:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(55, 73, 234);   
+}
+.button_continer {
+  display: flex;
+  margin-left: 10px;
+}

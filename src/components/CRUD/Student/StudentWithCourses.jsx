@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import './studentWithCourses.css'
 import Spinner from "../../Templates/Spinner/Spinner";
 
 export const StudentWithCourses = () => {

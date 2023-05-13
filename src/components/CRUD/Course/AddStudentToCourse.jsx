@@ -8,12 +8,10 @@ import { addStudentToCourse } from "../../../store/actions/course/addStudentToCo
 
 const AddStudentToCourse = () => {
   const { id } = useParams();
-  console.log('studentId', id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const courses = useSelector((state) => state.course.courses);
-  console.log(courses);
 
   const [courseId, setCourseId] = useState("");
   const [close, setClose] = useState(true);

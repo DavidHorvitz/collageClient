@@ -1,5 +1,5 @@
 export const isCourseNameValid = (name) => {
-    const regex = /^[a-zA-Z0-9\s]{2,30}$/;
+    const regex = /^[a-zA-Z0-9\s]{3,30}$/;
     return regex.test(name);
   };
   
@@ -17,16 +17,12 @@ export const isCourseNameValid = (name) => {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     return regex.test(date);
   };
-  
-//   const isIntegerValid = (value) => {
-//     const regex = /^[0-9]+$/;
-//     return regex.test(value);
-//   };
-  
- export const isBooleanValid = (value) => {
-    return typeof value === 'boolean';
+  export const isEndDateValid = (StartingDate, EndDate) => {
+    return EndDate < StartingDate ? false : true;
   };
   
+  
+
   export const isCourseDataValid = (courseData) => {
     const {
       CourseName,
@@ -34,7 +30,6 @@ export const isCourseNameValid = (name) => {
       EndDate,
       MinimumPassingScore,
       MaximumStudents,
-      IsReady,
     } = courseData;
   
     return (
@@ -43,7 +38,7 @@ export const isCourseNameValid = (name) => {
       isDateValid(EndDate) &&
       isMinimumPassingScoreValid(MinimumPassingScore) &&
       isMaximumStudentsValid(MaximumStudents) &&
-      isBooleanValid(IsReady)
+      isEndDateValid(StartingDate, EndDate)
     );
   };
   
