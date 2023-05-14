@@ -1,19 +1,10 @@
 import './mainApp.css';
-import Header from "./Templates/Wrapper/Header";
-import  Aside  from "./Templates/Wrapper/Aside";
-import Main from './Templates/Wrapper/Main';
-
-
-
+import LoginScreen from './LoginScreen/LoginScreen';
 
 export const MainApp = () => {
     return (
-        
         <div>
-            <Header />
-            <Aside />
-            <Main/>
-            {/* <Footer /> */}
+            <LoginScreen/>
         </div>
     );
 }

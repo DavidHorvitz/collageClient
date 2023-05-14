@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import studentReducer from './store/features/studentSlice';
 import courseReducer from './store/features/courseSlice';
 import lecturerReducer from './store/features/lecturerSlice'
+import webmasterSlice from './store/features/webmasterSlice';
 
 
 const store = configureStore({//here I initialize the global store state
@@ -17,6 +18,7 @@ const store = configureStore({//here I initialize the global store state
     student: studentReducer,
     course: courseReducer,
     lecturer: lecturerReducer,
+    webmaster: webmasterSlice,
     middleware: [thunk],
   }
 });

@@ -21,7 +21,7 @@ export const StudentTable = () => {
             <Spinner />
         </div>
     }
-    
+
     if (error) {
         return <p>Error: {error}</p>;
     }
@@ -74,7 +74,7 @@ export const StudentTable = () => {
                 data={tableData}
                 onButtonClickDelete={(student) => handlerDeleteStudent(student.Id, student)}
                 onButtonClickUpdate={(student) => handlerEditStudent(student.Id, student)}
-                onButtonClickGetProperties={(student) => handlerStudentCourses(student.Id,student)}
+                onButtonClickGetProperties={(student) => handlerStudentCourses(student.Id, student)}
                 onButtonClickAdd={(student) => handlerAddStudentToCourse(student.Id)} />
 
         </div>
