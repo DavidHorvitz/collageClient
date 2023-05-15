@@ -2,7 +2,7 @@ import React from "react";
 import './wrapper.css'
 import { Route, Routes } from "react-router-dom";
 import { MainPage } from "../../MainPage/MainPage";
-import { StudentTable } from "../../CRUD/Student/StudentData";
+import { StudentData } from "../../CRUD/Student/StudentData";
 import AddStudent from "../../CRUD/Student/AddStudent";
 import EditStudent from "../../CRUD/Student/EditStudent";
 import DeleteStudent from "../../CRUD/Student/DeleteStudent";
@@ -17,8 +17,8 @@ const Main = () => {
     return (
         <main id="main">
             <Routes>
-                <Route exact path="/" element={<MainPage/>} />
-                <Route exact path="/all-students" element={<StudentTable />} />
+                <Route exact path="/" element={<MainPage />} />
+                <Route path="/all-students" element={<StudentData />} />
                 <Route path="/add-student" element={<AddStudent />} />
                 <Route path="/add-course" element={<AddCourse />} />
                 <Route path="/edit-student/:id" element={<EditStudent />} />

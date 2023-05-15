@@ -12,8 +12,9 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getStudents());
-  }, [dispatch]);
+    // dispatch();
+  }, []);
+  dispatch(getStudents());
   dispatch(getCourses());
   dispatch(getLecturers());
   dispatch(getWebmaster());

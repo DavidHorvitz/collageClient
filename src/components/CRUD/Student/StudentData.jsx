@@ -1,30 +1,30 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentWithCourses } from "../../../store/actions/student/getStudentWithCourses";
 import Spinner from "../../Templates/Spinner/Spinner";
 import { DynamicTable } from "../../Templates/Table/DynamicTable";
 
 
-export const StudentTable = () => {
+export const StudentData = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     //the state => state.student.students came from the store state in the index file
     const students = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
-    const loading = useSelector((state) => state.student.loading);
-    const error = useSelector((state) => state.student.error);
-    if (!students) {
-        return null;
-    }
-    if (loading) {
-        return <div>
-            <Spinner />
-        </div>
-    }
+    // const loading = useSelector((state) => state.student.loading);
+    // const error = useSelector((state) => state.student.error);
+    // if (!students) {
+    //     return null;
+    // }
+    // if (loading) {
+    //     return <div>
+    //         <Spinner />
+    //     </div>
+    // }
 
-    if (error) {
-        return <p>Error: {error}</p>;
-    }
+    // if (error) {
+    //     return <p>Error: {error}</p>;
+    // }
     const tableData = students.map(student => ({
         Id: student.Id,
         Name: student.Name,

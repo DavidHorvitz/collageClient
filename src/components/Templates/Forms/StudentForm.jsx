@@ -8,7 +8,7 @@ export const StudentForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email,
     const navigate = useNavigate();
     useEffect(() => {
         if (!close) {
-            navigate('/all-courses');
+            navigate('/all-students');
         }
     }, [close, navigate]);
     
@@ -57,7 +57,7 @@ export const StudentForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email,
                         )}
                     </div>
 
-                    <button className="card_button" onClick={saveData}>Save</button>
+                    <button className="card_button" onClick={()=>saveData()}>Save</button>
                 </div>
             </div>
         </div>
