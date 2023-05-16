@@ -3,20 +3,20 @@ import '../../CRUD/model.css'
 import ButtonClose from "../ButtonClose/ButtonClose";
 import { isNameValid, isPhoneNumberValid, isEmailValid } from "../../../validation/inputValidation";
 import { useNavigate } from "react-router-dom";
-export const StudentForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email, setEmail, saveData }) => {
+export const LecturerForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email, setEmail, saveData }) => {
     const [close, setClose] = useState(true);
     const navigate = useNavigate();
     useEffect(() => {
         if (!close) {
-            navigate('/all-students');
+            navigate('/all-lecturers');
         }
     }, [close, navigate]);
-    
+
     return (
         <div className="container">
             <ButtonClose close={setClose} />
             <div className="card">
-                <h1 className="card_title"> Student</h1>
+                <h1 className="card_title">Lecturer</h1>
                 <p className="card_title-info">Pen By David Horvitz</p>
                 <div className="card_form">
                     <div className="input">
@@ -56,8 +56,7 @@ export const StudentForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email,
                             <span className="error">Please enter a valid email address.</span>
                         )}
                     </div>
-
-                    <button className="card_button" onClick={()=>saveData()}>Save</button>
+                    <button className="card_button" onClick={() => saveData()}>Save</button>
                 </div>
             </div>
         </div>

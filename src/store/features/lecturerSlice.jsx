@@ -9,7 +9,7 @@ import { editLecturer } from '../actions/lecturer/editLecturer';
 
 
 const lecturerSlice = createSlice({
-    name: 'courses',
+    name: 'lecturers',
     initialState: {
         lecturers: [],
         lecturerWithCourses: [],

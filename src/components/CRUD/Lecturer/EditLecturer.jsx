@@ -1,10 +1,9 @@
 import React, {  useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { editStudent } from "../../../store/actions/student/editStudent";
-import { StudentForm } from "../../Templates/Forms/StudentForm";
-
-const EditStudent = () => {
+import { editLecturer } from "../../../store/actions/lecturer/editLecturer";
+import { LecturerForm } from "../../Templates/Forms/LecturerForm";
+const EditLecturer = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -26,20 +25,20 @@ const EditStudent = () => {
         };
         //here i sand to the API request an object with tow properties, id to the url and the data that will be changed
         //you can see that in editStudent Api
-        dispatch(editStudent({ id, updatedStudent: updateDateObject }))
+        dispatch(editLecturer({ id, updatedLecturer: updateDateObject }))
             .then(() => {
-                navigate('/all-students');
+                navigate('/all-lecturers');
             })
             .catch((err) => {
-                console.error('Failed to add student:', err);
+                console.error('Failed to add lecturer:', err);
             });
 
     };
 
     return (
         <div>
-        <h1>Edit Student</h1>
-        <StudentForm
+        <h1>Edit Lecturer</h1>
+        <LecturerForm
             Name={Name}
             setName={setName}
             PhoneNumber={PhoneNumber}
@@ -51,4 +50,4 @@ const EditStudent = () => {
     </div>
     )
 };
-export default EditStudent;
+export default EditLecturer;

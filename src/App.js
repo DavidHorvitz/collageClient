@@ -11,9 +11,9 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // dispatch();
-  }, []);
+  // useEffect(() => {
+  //   // dispatch();
+  // }, []);
   dispatch(getStudents());
   dispatch(getCourses());
   dispatch(getLecturers());

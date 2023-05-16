@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { DynamicTable } from "../../Templates/Table/DynamicTable";
 import { useNavigate } from "react-router-dom";
 
-export const CourseTable = () => {
+export const CourseData = () => {
   const courses = useSelector(state => state.course.courses);
 
   const navigate = useNavigate();

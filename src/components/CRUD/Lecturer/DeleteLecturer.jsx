@@ -1,11 +1,11 @@
 import React, {  useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteStudent } from "../../../store/actions/student/deleteStudent";
-import { StudentForm } from "../../Templates/Forms/StudentForm";
+import { deleteLecturer } from "../../../store/actions/lecturer/deleteLecturer";
+import { LecturerForm } from "../../Templates/Forms/LecturerForm";
 
 
-const DeleteStudent = () => {
+const DeleteLecturer = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -20,9 +20,9 @@ const DeleteStudent = () => {
 
 
     const deleteStudentFunction = () => {
-        dispatch(deleteStudent(id))
+        dispatch(deleteLecturer(id))
             .then(() => {
-                navigate('/all-students');
+                navigate('/all-lecturers');
             })
             .catch((err) => {
                 console.error('Failed to Delete student:', err);
@@ -31,8 +31,8 @@ const DeleteStudent = () => {
 
     return (
         <div>
-        <h1>Delete Student</h1>
-        <StudentForm
+        <h1>Delete Lecturer</h1>
+        <LecturerForm
             Name={Name}
             setName={setName}
             PhoneNumber={PhoneNumber}
@@ -44,4 +44,4 @@ const DeleteStudent = () => {
     </div>
     )
 };
-export default DeleteStudent;
+export default DeleteLecturer;

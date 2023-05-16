@@ -1,9 +1,8 @@
 #aside {
-     /* grid-row: 2 / 4; */
-   /* min-height: 300px; */
-    /* width: 30%;
-    height: 70%; */
     width: 1000px;
     height: 1000px;
     background: rgb(164, 143, 184);
+    align-items: center;
+    display: flex;
+    justify-content: center;
   }

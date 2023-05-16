@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import '../../CRUD/model.css'
 import ButtonClose from "../ButtonClose/ButtonClose";
-import { isNameValid, isPhoneNumberValid, isEmailValid } from "../../../validation/inputValidation";
+import { isNameValid, isPhoneNumberValid, isEmailValid, isPasswordValid } from "../../../validation/inputValidation";
 import { useNavigate } from "react-router-dom";
-export const StudentForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email, setEmail, saveData }) => {
+export const WebmasterForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email, setEmail, Password, setPassword, saveData }) => {
     const [close, setClose] = useState(true);
     const navigate = useNavigate();
     useEffect(() => {
         if (!close) {
-            navigate('/all-students');
+            navigate('/all-webmasters');
         }
     }, [close, navigate]);
-    
+
     return (
         <div className="container">
             <ButtonClose close={setClose} />
             <div className="card">
-                <h1 className="card_title"> Student</h1>
+                <h1 className="card_title"> Webmaster</h1>
                 <p className="card_title-info">Pen By David Horvitz</p>
                 <div className="card_form">
                     <div className="input">
@@ -56,8 +56,20 @@ export const StudentForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email,
                             <span className="error">Please enter a valid email address.</span>
                         )}
                     </div>
+                    <div className="input">
+                        <input
+                            className={`input_field ${!isPasswordValid(Password) && "invalid"}`}
+                            type="text"
+                            value={Password}
+                            onChange={(e) => setPassword(e.currentTarget.value)}
+                        />
+                        <label className="input_label">Password</label>
+                        {!isPasswordValid(Password) && (
+                            <span className="error">Please enter a valid Password address.</span>
+                        )}
+                    </div>
 
-                    <button className="card_button" onClick={()=>saveData()}>Save</button>
+                    <button className="card_button" onClick={() => saveData()}>Save</button>
                 </div>
             </div>
         </div>

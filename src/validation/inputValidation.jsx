@@ -17,5 +17,9 @@ export const isNameValid = (name) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     return regex.test(email);
   }
+  export const isPasswordValid = (password) => {
+    const regex = /^.{6,20}$/;
+    return regex.test(password);
+  };
  
   
