@@ -9,8 +9,6 @@ const Aside = () => {
             <div className="nav_button" onClick={() => navigate("/add-student")}>Add a new Student</div>
             <div className="nav_button" onClick={() => navigate("/add-course")}>Add a new Course</div>
             <div className="nav_button" onClick={() => navigate("/add-webmaster")}>Add a new WebMaster</div>
-
-
         </aside>
     )
 }

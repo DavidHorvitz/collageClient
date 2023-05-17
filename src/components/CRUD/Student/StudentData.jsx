@@ -1,30 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentWithCourses } from "../../../store/actions/student/getStudentWithCourses";
-import Spinner from "../../Templates/Spinner/Spinner";
 import { DynamicTable } from "../../Templates/Table/DynamicTable";
+import DeleteConfirmation from "../../Templates/DeleteConfirmation/DeleteConfirmation";
+import { deleteStudent } from "../../../store/actions/student/deleteStudent";
 
 
 export const StudentData = () => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
     //the state => state.student.students came from the store state in the index file
     const students = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
-    // const loading = useSelector((state) => state.student.loading);
-    // const error = useSelector((state) => state.student.error);
-    // if (!students) {
-    //     return null;
-    // }
-    // if (loading) {
-    //     return <div>
-    //         <Spinner />
-    //     </div>
-    // }
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [confirmDelete, setConfirmDelete] = useState(false);
+    const [selectedStudentId, setSelectedStudentId] = useState(null);
 
-    // if (error) {
-    //     return <p>Error: {error}</p>;
-    // }
     const tableData = students.map(student => ({
         Id: student.Id,
         Name: student.Name,
@@ -32,20 +22,38 @@ export const StudentData = () => {
         Email: student.Email,
     }));
 
-    const handlerEditStudent = (id, data) => {
+    const deleteStudentItem = (id) => {
+        setSelectedStudentId(id);
+        setConfirmDelete(true);
+    };
+
+    const handleConfirmDelete = () => {
+        dispatch(deleteStudent(selectedStudentId))
+            .then(() => {
+                navigate("/all-students");
+            })
+            .catch((err) => {
+                console.error("Failed to Delete Course:", err);
+            })
+            .finally(() => {
+                setConfirmDelete(false);
+                setSelectedStudentId(null);
+            });
+    };
+
+    const handleCancelDelete = () => {
+        setConfirmDelete(false);
+        setSelectedStudentId(null);
+    };
+
+    const updateStudent = (id, data) => {
         navigate(`/edit-student/${id}`, {
             state: {
                 data: data,
             }
         });
     };
-    const handlerDeleteStudent = (id, data) => {
-        navigate(`/delete-student/${id}`, {
-            state: {
-                data: data,
-            }
-        });
-    };
+
     const handlerStudentCourses = (id, data) => {
         dispatch(getStudentWithCourses(id))
             .then(() => {
@@ -58,25 +66,28 @@ export const StudentData = () => {
             .catch((err) => {
                 console.error('Failed to add student:', err);
             });
-
-
     }
 
     const handlerAddStudentToCourse = (id) => {
         navigate(`/add-student-to-course/${id}`)
     };
 
-
     return (
         <div>
             <h1>Student details</h1>
             <DynamicTable
                 data={tableData}
-                onButtonClickDelete={(student) => handlerDeleteStudent(student.Id, student)}
-                onButtonClickUpdate={(student) => handlerEditStudent(student.Id, student)}
+                onButtonClickDelete={(student) => deleteStudentItem(student.Id)}
+                onButtonClickUpdate={(student) => updateStudent(student.Id, student)}
+                onButtonClickAdd={(student) => handlerAddStudentToCourse(student.Id)}
                 onButtonClickGetProperties={(student) => handlerStudentCourses(student.Id, student)}
-                onButtonClickAdd={(student) => handlerAddStudentToCourse(student.Id)} />
-
+            />
+            {confirmDelete && (
+                <DeleteConfirmation
+                    onCancel={handleCancelDelete}
+                    onConfirm={handleConfirmDelete}
+                />
+            )}
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getWebmaster } from '../actions/webmaster/getWebmaster';
 import { addWebmaster } from '../actions/webmaster/setWebmaster';
+import { deleteWebmaster } from '../actions/webmaster/deleteWebmaster';
 
 const webMasterSlice = createSlice({
   name: 'webmasters',
@@ -42,15 +43,15 @@ const webMasterSlice = createSlice({
       //     state.webmaster = updatedStudent;
       //   }
       // })
-      // .addCase(deleteStudent.fulfilled, (state, action) => {
-      //   state.loading = false;
-      //   state.webmasters = state.webmasters.filter(
-      //     (student) => student.Id !== action.meta.arg
-      //   );
-      //   if (state.webmaster && state.webmaster.Id === action.meta.arg) {
-      //     state.webmaster = null;
-      //   }
-      // })
+      .addCase(deleteWebmaster.fulfilled, (state, action) => {
+        state.loading = false;
+        state.webmasters = state.webmasters.filter(
+          (webmaster) => webmaster.Id !== action.meta.arg
+        );
+        if (state.webmaster && state.webmaster.Id === action.meta.arg) {
+          state.webmaster = null;
+        }
+      })
       .addMatcher(
         (action) =>
           action.type.endsWith('/pending') || action.type.endsWith('/rejected'),
