@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useIdleTimeout from "../useIdleTimeout/useIdleTimeout";
 import AddWebmaster from "../CRUD/Webmaster/AddWebmaster";
-
+import { WebmasterData } from "../CRUD/Webmaster/WebmasterData";
 const AdminCodeChecker = () => {
   const ADMIN_USERNAME = 'David';
   const ADMIN_PASSWORD = '0522412371';
@@ -29,11 +29,20 @@ const AdminCodeChecker = () => {
   const resetTimeout = useIdleTimeout(120000, logout); // 30 seconds in milliseconds
 
   if (isLoggedIn) {
-    return (
-      <div>
-        <AddWebmaster />
-      </div>
-    );
+    const currentURL = window.location.href;
+    if (currentURL.endsWith('/add-webmaster')) {
+      return (
+        <div>
+          <AddWebmaster />
+        </div>
+      );
+    } else if (currentURL.endsWith('/all-webmasters')) {
+      return (
+        <div>
+          <WebmasterData />
+        </div>
+      );
+    }
   }
 
   return (
@@ -53,3 +62,4 @@ const AdminCodeChecker = () => {
 };
 
 export default AdminCodeChecker;
+

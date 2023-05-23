@@ -13,8 +13,8 @@ import EditCourse from "../../CRUD/Course/EditCourse";
 import { LecturerData } from "../../CRUD/Lecturer/LecturerData";
 import AddLecturer from "../../CRUD/Lecturer/AddLecturer";
 import EditLecturer from "../../CRUD/Lecturer/EditLecturer";
-import { WebmasterData } from "../../CRUD/Webmaster/WebmasterData";
 import AdminCodeChecker from "../../AdminCodeChecker/AdminCodeChecker";
+
 const Main = () => {
     return (
         <main id="main">
@@ -23,7 +23,7 @@ const Main = () => {
                 <Route path="/all-students" element={<StudentData />} />
                 <Route path="/all-courses" element={<CourseData />} />
                 <Route path="/all-lecturers" element={<LecturerData />} />
-                <Route path="/all-webmasters" element={<WebmasterData />} />
+                <Route path="/all-webmasters" element={<AdminCodeChecker />} />
 
                 <Route path="/add-student" element={<AddStudent />} />
                 <Route path="/add-lecturer" element={<AddLecturer />} />

@@ -77,7 +77,7 @@ footer {
   }
 }
 .nav_button {
-  background-color: rgb(44, 183, 66);
+  background-color: rgb(59, 156, 216);
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -85,7 +85,7 @@ footer {
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
-  border: 1px solid rgb(44, 183, 66);
+  border: 1px solid rgb(59, 156, 216);
   width: 90%;
   margin-right: 10px;
   margin-left: 20px;
@@ -96,5 +96,5 @@ footer {
 
 .nav_button:hover {
   background-color: rgb(255, 255, 255);
-  color: rgb(44, 183, 66);
+  color: rgb(59, 156, 216);
 }

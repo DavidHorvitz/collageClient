@@ -29,7 +29,7 @@ export const WebmasterData = () => {
     const handleConfirmDelete = () => {
         dispatch(deleteWebmaster(selectedCourseId))
             .then(() => {
-                navigate("/all-courses");
+                navigate("/all-webmasters");
             })
             .catch((err) => {
                 console.error("Failed to Delete Course:", err);
@@ -53,9 +53,6 @@ export const WebmasterData = () => {
             }
         });
     };
-
-
-
 
     return (
         <div>
