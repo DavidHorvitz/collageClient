@@ -12,7 +12,6 @@ import courseReducer from './store/features/courseSlice';
 import lecturerReducer from './store/features/lecturerSlice'
 import webmasterSlice from './store/features/webmasterSlice';
 
-
 const store = configureStore({//here I initialize the global store state
   reducer: {
     student: studentReducer,
@@ -26,9 +25,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
+        <Router>
+          <App />
+        </Router>
     </Provider>
   </React.StrictMode>
 );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import '../../CRUD/model.css'
 import ButtonClose from "../ButtonClose/ButtonClose";
+import { Container,TextField } from "@mui/material";
 import { isNameValid, isPhoneNumberValid, isEmailValid } from "../../../validation/inputValidation";
 import { useNavigate } from "react-router-dom";
 export const LecturerForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email, setEmail, saveData }) => {
@@ -13,53 +13,45 @@ export const LecturerForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email
     }, [close, navigate]);
 
     return (
-        <div className="container">
-            <ButtonClose close={setClose} />
-            <div className="card">
-                <h1 className="card_title">Lecturer</h1>
-                <p className="card_title-info">Pen By David Horvitz</p>
-                <div className="card_form">
-                    <div className="input">
-                        <input
-                            className={`input_field ${!isNameValid(Name) && "invalid"}`}
-                            type="text"
-                            value={Name}
-                            onChange={(e) => setName(e.currentTarget.value)}
-                        />
-                        <label className="input_label">Name</label>
-                        {!isNameValid(Name) && (
-                            <span className="error">Please enter a valid Name.</span>
-                        )}
-                    </div>
-                    <div className="input">
-                        <input
-                            className={`input_field ${!isPhoneNumberValid(PhoneNumber) && "invalid"}`}
-                            type="text"
-                            value={PhoneNumber}
-                            onChange={(e) => setPhoneNumber(e.currentTarget.value)}
-                        />
-                        <label className="input_label">Phone Number</label>
-                        {!isPhoneNumberValid(PhoneNumber) && (
-                            <span className="error">Please enter a valid phone number.</span>
-                        )}
-                    </div>
-
-                    <div className="input">
-                        <input
-                            className={`input_field ${!isEmailValid(Email) && "invalid"}`}
-                            type="text"
-                            value={Email}
-                            onChange={(e) => setEmail(e.currentTarget.value)}
-                        />
-                        <label className="input_label">Email</label>
-                        {!isEmailValid(Email) && (
-                            <span className="error">Please enter a valid email address.</span>
-                        )}
-                    </div>
-                    <button className="card_button" onClick={() => saveData()}>Save</button>
-                </div>
+        <div>
+        <Container className="space-y-6 shadow-2xl rounded-lg p-4 relative">
+        <ButtonClose close={setClose} />
+            <div>
+                <TextField fullWidth label="Name" 
+                   className={`input_field ${!isNameValid(Name) && "invalid"}`}
+                    type="text"
+                    value={Name}
+                    onChange={(e) => setName(e.currentTarget.value)}
+                />
+                {!isNameValid(Name) && (
+                    <span className="error">Please enter a valid Name.</span>
+                )}
             </div>
-        </div>
+            <div>
+                <TextField fullWidth label="Phone Number" 
+                    className={`input_field ${!isPhoneNumberValid(PhoneNumber) && "invalid"}`}
+                    type="text"
+                    value={PhoneNumber}
+                    onChange={(e) => setPhoneNumber(e.currentTarget.value)}
+                />
+                {!isPhoneNumberValid(PhoneNumber) && (
+                    <span className="error">Please enter a valid phone number.</span>
+                )}
+            </div>
+            <div>
+                <TextField fullWidth label="Email" id="fullWidth"
+                    className={`input_field ${!isEmailValid(Email) && "invalid"}`}
+                    type="text"
+                    value={Email}
+                    onChange={(e) => setEmail(e.currentTarget.value)}
+                />
+                {!isEmailValid(Email) && (
+                    <span className="error">Please enter a valid email address.</span>
+                )}
+            </div>
+            <button className="card_button" onClick={() => saveData()}>Save</button>
+        </Container>
+    </div>
     );
 }
 

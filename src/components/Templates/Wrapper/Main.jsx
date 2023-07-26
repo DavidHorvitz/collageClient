@@ -1,5 +1,4 @@
 import React from "react";
-import './wrapper.css'
 import { Route, Routes } from "react-router-dom";
 import { MainPage } from "../../MainPage/MainPage";
 import { StudentData } from "../../CRUD/Student/StudentData";
@@ -14,10 +13,12 @@ import { LecturerData } from "../../CRUD/Lecturer/LecturerData";
 import AddLecturer from "../../CRUD/Lecturer/AddLecturer";
 import EditLecturer from "../../CRUD/Lecturer/EditLecturer";
 import AdminCodeChecker from "../../AdminCodeChecker/AdminCodeChecker";
-
+import { Box } from "@mui/material";
 const Main = () => {
+    
     return (
-        <main id="main">
+        <Box className="h-full float-right"
+        sx={{width:'88%'}}>
             <Routes>
                 <Route exact path="/" element={<MainPage />} />
                 <Route path="/all-students" element={<StudentData />} />
@@ -37,7 +38,7 @@ const Main = () => {
                 <Route path="/student-with-courses/:id" element={<StudentWithCourses />} />
                 <Route path="/add-student-to-course/:id" element={<AddStudentToCourse />} />
             </Routes>
-        </main>
+        </Box>
     )
 }
 export default Main;

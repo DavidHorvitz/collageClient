@@ -1,21 +1,20 @@
-import React from "react";
+import React from 'react';
 import { useNavigate } from "react-router-dom";
-import './header.scss'
+import { CssBaseline, Box } from "@mui/material";
+import LogoImage from '../../../static/imgaes/headerLogo3.png'
 const Header = () => {
-    const navigate = useNavigate();
- 
-    return (
-        <header id="header">
-            <h1 id="os">Collage</h1>
+  const navigate = useNavigate();
 
-            <div className="button_Container">
-                <div className="main_page_button" onClick={() => navigate("/")}>Main Page</div>
-                <div className="add_to_cart_button" onClick={() => navigate("/all-students")}>Student details</div>
-                <div className="add_to_cart_button" onClick={() => navigate("/all-courses")}>Courses details</div>
-                <div className="add_to_cart_button" onClick={() => navigate("/all-lecturers")}>Lecturers details</div>
-                <div className="add_to_cart_button" onClick={() => navigate("/all-webmasters")}>Webmaster details</div>
-            </div>
-        </header>
-    )
+  return (
+    <Box sx={{ width: '89%', }} className='float-right' >
+      <div  >
+        <div onClick={() => navigate("/")}>
+          <img src={LogoImage} className='h-32 w-full' alt="Logo" />
+        </div>
+        <CssBaseline />
+      </div>
+    </Box>
+  )
 }
+
 export default Header;
