@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ButtonClose from "../ButtonClose/ButtonClose";
-import { isNameValid, isPhoneNumberValid, isEmailValid, isPasswordValid } from "../../../validation/inputValidation";
+import ButtonClose from "../Templates/ButtonClose/ButtonClose";
+import { isNameValid, isPhoneNumberValid, isEmailValid, isPasswordValid } from "../../validation/inputValidation";
 import { useNavigate } from "react-router-dom";
 import { Container, TextField } from "@mui/material";
 export const WebmasterForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email, setEmail, Password, setPassword, saveData }) => {

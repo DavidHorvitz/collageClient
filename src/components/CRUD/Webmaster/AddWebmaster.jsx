@@ -55,7 +55,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addWebmaster } from "../../../store/actions/webmaster/setWebmaster";
-import { WebmasterForm } from "../../Templates/Forms/WebmasterForm";
+import { WebmasterForm } from "../../Forms/WebmasterForm";
 import AdminCodeChecker from "../../AdminCodeChecker/AdminCodeChecker";
 
 const AddWebmaster = () => {

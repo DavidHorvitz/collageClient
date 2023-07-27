@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ButtonClose from "../ButtonClose/ButtonClose";
-import { isNameValid, isPhoneNumberValid, isEmailValid } from "../../../validation/inputValidation";
+import ButtonClose from "../Templates/ButtonClose/ButtonClose";
+import { isNameValid, isPhoneNumberValid, isEmailValid } from "../../validation/inputValidation";
 import { useNavigate } from "react-router-dom";
 import { Container,TextField } from "@mui/material";
 export const StudentForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email, setEmail, saveData }) => {

@@ -5,6 +5,7 @@ import { getStudentWithCourses } from "../../../store/actions/student/getStudent
 import { DynamicTable } from "../../Templates/Table/DynamicTable";
 import DeleteConfirmation from "../../Templates/DeleteConfirmation/DeleteConfirmation";
 import { deleteStudent } from "../../../store/actions/student/deleteStudent";
+import DynamicCard from "../../Templates/Card/Card";
 
 
 export const StudentData = () => {
@@ -75,7 +76,7 @@ export const StudentData = () => {
     return (
         <div>
             <h1>Student details</h1>
-            <DynamicTable
+            <DynamicCard
                 data={tableData}
                 onButtonClickDelete={(student) => deleteStudentItem(student.Id)}
                 onButtonClickUpdate={(student) => updateStudent(student.Id, student)}

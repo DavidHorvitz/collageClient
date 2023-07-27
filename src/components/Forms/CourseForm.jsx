@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import ButtonClose from "../ButtonClose/ButtonClose";
+import ButtonClose from "../Templates/ButtonClose/ButtonClose";
 import { Container, TextField } from "@mui/material";
 
 import {
@@ -10,7 +10,7 @@ import {
   isMaximumStudentsValid,
   isDateValid,
   isEndDateValid,
-} from "../../../validation/inputCourseValidation";
+} from "../../validation/inputCourseValidation";
 import { useNavigate } from "react-router-dom";
 
 export const CourseForm = ({ courseData, setCourseData, saveData }) => {

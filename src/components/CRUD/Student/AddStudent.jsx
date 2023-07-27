@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addStudent } from "../../../store/actions/student/setStudent";
-import { StudentForm } from "../../Templates/Forms/StudentForm";
+import { StudentForm } from "../../Forms/StudentForm";
 import { Typography } from '@mui/material';
 
 const AddStudent = () => {

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DynamicTable } from "../../Templates/Table/DynamicTable";
 import { deleteWebmaster } from "../../../store/actions/webmaster/deleteWebmaster";
 import DeleteConfirmation from "../../Templates/DeleteConfirmation/DeleteConfirmation";
+import DynamicCard from "../../Templates/Card/Card";
 
 
 export const WebmasterData = () => {
@@ -57,7 +58,7 @@ export const WebmasterData = () => {
     return (
         <div>
             <h1>Webmaster details</h1>
-            <DynamicTable
+            <DynamicCard
                 data={tableData}
                 onButtonClickDelete={(webmaster) => deleteWebmasterItem(webmaster.Id)}
                 onButtonClickUpdate={(webmaster) => updateWebmaster(webmaster.Id, webmaster)}

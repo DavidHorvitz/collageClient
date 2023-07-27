@@ -1,8 +1,6 @@
 import PeopleIcon from '@mui/icons-material/People';
 import ImageIcon from '@mui/icons-material/Image';
 import PublicIcon from '@mui/icons-material/Public';
-import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet';
-import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
 import DnsIcon from '@mui/icons-material/Dns';
 
 export const tableNavbarItems = [
@@ -40,15 +38,15 @@ export const addNavbarItems = [
     },
     {
         id: 1,
-        icon: <DnsIcon />,
-        label: 'Add Lecturer',
-        route: 'add-lecturer',
-    },
-    {
-        id: 2,
         icon: <ImageIcon />,
         label: 'Add Course',
         route: 'add-course',
+    },
+    {
+        id: 2,
+        icon: <DnsIcon />,
+        label: 'Add Lecturer',
+        route: 'add-lecturer',
     },
     {
         id: 3,

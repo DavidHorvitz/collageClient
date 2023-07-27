@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { CourseForm } from "../../Templates/Forms/CourseForm";
+import { CourseForm } from "../../Forms/CourseForm";
 import { addCourse } from "../../../store/actions/course/setCourse";
 
 const AddCourse = () => {
