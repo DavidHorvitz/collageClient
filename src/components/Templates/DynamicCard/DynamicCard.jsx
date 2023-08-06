@@ -4,11 +4,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Card, CardActions, CardContent } from "@mui/material";
 
-export default function DynamicCard({ data }) {
+
+export default function DynamicCard({ data, onButtonClickDelete,onButtonClickGetProperties }) {
     if (!data || data.length === 0) {
         return <p>No data to display.</p>;
     }
-    console.log(data);
     return (
         <div className="flex space-x-10 float-right shadow-inner">
             {data.map((item, index) => (
@@ -33,7 +33,8 @@ export default function DynamicCard({ data }) {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Properties</Button>
+                        <Button size="small" onClick={() => onButtonClickGetProperties(item)}>More</Button>
+                        <Button size="small" onClick={() => onButtonClickDelete(item)}>Delete</Button>
                     </CardActions>
                 </Card>
             ))}

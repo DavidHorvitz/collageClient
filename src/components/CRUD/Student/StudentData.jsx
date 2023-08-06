@@ -2,16 +2,22 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentWithCourses } from "../../../store/actions/student/getStudentWithCourses";
-import { DynamicTable } from "../../Templates/Table/DynamicTable";
 import DeleteConfirmation from "../../Templates/DeleteConfirmation/DeleteConfirmation";
 import { deleteStudent } from "../../../store/actions/student/deleteStudent";
-import DynamicCard from "../../Templates/Card/Card";
+import DynamicCard from "../../Templates/DynamicCard/DynamicCard";
+import { DynamicTable } from "../../Templates/Table/DynamicTable";
+
+
+export const HandlerAddStudentToCourse = (id) => {
+    const navigate = useNavigate();
+    navigate(`/add-student-to-course/${id}`)
+};
 
 
 export const StudentData = () => {
     //the state => state.student.students came from the store state in the index file
-    const students = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
     const navigate = useNavigate();
+    const students = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
     const dispatch = useDispatch();
     const [confirmDelete, setConfirmDelete] = useState(false);
     const [selectedStudentId, setSelectedStudentId] = useState(null);
@@ -23,7 +29,8 @@ export const StudentData = () => {
         Email: student.Email,
     }));
 
-    const deleteStudentItem = (id) => {
+
+    const handleDeleteStudentItem = (id) => {
         setSelectedStudentId(id);
         setConfirmDelete(true);
     };
@@ -47,7 +54,7 @@ export const StudentData = () => {
         setSelectedStudentId(null);
     };
 
-    const updateStudent = (id, data) => {
+    const handleUpdateStudent = (id, data) => {
         navigate(`/edit-student/${id}`, {
             state: {
                 data: data,
@@ -61,6 +68,7 @@ export const StudentData = () => {
                 navigate(`/student-with-courses/${id}`, {
                     state: {
                         data: data,
+                        studentId: id
                     }
                 });
             })
@@ -69,18 +77,15 @@ export const StudentData = () => {
             });
     }
 
-    const handlerAddStudentToCourse = (id) => {
-        navigate(`/add-student-to-course/${id}`)
-    };
 
     return (
         <div>
             <h1>Student details</h1>
             <DynamicCard
                 data={tableData}
-                onButtonClickDelete={(student) => deleteStudentItem(student.Id)}
-                onButtonClickUpdate={(student) => updateStudent(student.Id, student)}
-                onButtonClickAdd={(student) => handlerAddStudentToCourse(student.Id)}
+                onButtonClickDelete={(student) => handleDeleteStudentItem(student.Id)}
+                onButtonClickUpdate={(student) => handleUpdateStudent(student.Id, student)}
+                // onButtonClickAdd={(student) => HandlerAddStudentToCourse(student.Id)}
                 onButtonClickGetProperties={(student) => handlerStudentCourses(student.Id, student)}
             />
             {confirmDelete && (

@@ -13,6 +13,7 @@ import { LecturerData } from "../../CRUD/Lecturer/LecturerData";
 import AddLecturer from "../../CRUD/Lecturer/AddLecturer";
 import EditLecturer from "../../CRUD/Lecturer/EditLecturer";
 import AdminCodeChecker from "../../AdminCodeChecker/AdminCodeChecker";
+import CardProperties from "../CardProperties/CardProperties";
 import { Box } from "@mui/material";
 const Main = () => {
     

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DynamicTable } from "../../Templates/Table/DynamicTable";
 import { deleteWebmaster } from "../../../store/actions/webmaster/deleteWebmaster";
 import DeleteConfirmation from "../../Templates/DeleteConfirmation/DeleteConfirmation";
-import DynamicCard from "../../Templates/Card/Card";
+import DynamicCard from "../../Templates/DynamicCard/DynamicCard";
 
 
 export const WebmasterData = () => {

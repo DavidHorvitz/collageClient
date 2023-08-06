@@ -42,8 +42,6 @@ const AddStudentToCourse = () => {
         <h1 className="card_title">Add Student To Course</h1>
         <p className="card_title-info">Pen By David Horvitz</p>
         <div className="card_form">
-
-
           {/* Display the list of courses */}
           <div className="input">
             <select
@@ -59,7 +57,6 @@ const AddStudentToCourse = () => {
               ))}
             </select>
           </div>
-
           <button className="card_button" onClick={() => saveData()}>
             Save
           </button>
