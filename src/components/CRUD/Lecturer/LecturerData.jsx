@@ -1,9 +1,11 @@
+import * as React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { DynamicTable } from "../../Templates/Table/DynamicTable";
 import { useNavigate } from "react-router-dom";
 import { deleteLecturer } from "../../../store/actions/lecturer/deleteLecturer";
 import DeleteConfirmation from "../../Templates/DeleteConfirmation/DeleteConfirmation";
 import { useState } from "react";
+import DynamicCard from "../../Templates/DynamicCard/DynamicCard";
 
 
 export const LecturerData = () => {
@@ -19,6 +21,7 @@ export const LecturerData = () => {
     Name: lecturer.Name,
     Phone_Number: lecturer.PhoneNumber,
     Email: lecturer.Email,
+    ImageProfile: lecturer.ImageProfile
   }));
 
   const deleteLecturerItem = (id) => {
@@ -26,6 +29,7 @@ export const LecturerData = () => {
     setConfirmDelete(true);
   };
   const handleConfirmDelete = () => {
+    console.log("Confirm delete called");
     dispatch(deleteLecturer(selectedLecturerId))
       .then(() => {
         navigate("/all-lecturers");
@@ -54,7 +58,7 @@ export const LecturerData = () => {
   return (
     <div>
       <h1>Lecturer details</h1>
-      <DynamicTable
+      <DynamicCard
         data={tableData}
         onButtonClickDelete={(lecturer) => deleteLecturerItem(lecturer.Id)}
         onButtonClickUpdate={(lecturer) => updateLecturer(lecturer.Id, lecturer)}
@@ -68,4 +72,5 @@ export const LecturerData = () => {
     </div>
   );
 };
+
 

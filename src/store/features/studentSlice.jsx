@@ -8,11 +8,11 @@ import { deleteStudent } from '../actions/student/deleteStudent';
 const studentsSlice = createSlice({
   name: 'students',
   initialState: {
-    students: [],
-    studentCourses: [],
-    student: null,
+    students: [], // An array to store all students along with their courses
+    studentCourses: null,//An Object to store a single student with its course
+    student: null, // Store the student object with courses directly here
     loading: false,
-    error: null
+    error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -30,21 +30,7 @@ const studentsSlice = createSlice({
       })
       .addCase(getStudentWithCourses.fulfilled, (state, action) => {
         state.loading = false;
-        const studentWithCourses = action.payload;
-        const index = state.studentCourses.findIndex(
-          (student) => student.Id === studentWithCourses.Id,
-        );
-        if (index !== -1) {
-          // Update the student object with the new data, including courses
-          state.studentCourses[index] = { ...state.studentCourses[index], ...studentWithCourses };
-          // If the updated student is the current student, update the state accordingly
-          if (state.student && state.student.Id === studentWithCourses.Id) {
-            state.student = { ...state.student, ...studentWithCourses };
-          }
-        } else {
-          // If the student is not already in the state, add it to the studentCourses array
-          state.studentCourses.push(studentWithCourses);
-        }
+        state.studentCourses = action.payload; // Store the received student object directly
       })
       .addCase(getStudentWithCourses.rejected, (state, action) => {
         state.loading = false;
@@ -90,8 +76,8 @@ const studentsSlice = createSlice({
           state.loading = false;
           state.error = action.error.message;
         }
-      )
-  }
+      );
+  },
 });
 
 export default studentsSlice.reducer;

@@ -6,7 +6,8 @@ import { getStudents } from './store/actions/student/getStudent';
 import { getCourses } from './store/actions/course/getCourse';
 import { getLecturers } from './store/actions/lecturer/getLecturer';
 import { getWebmaster } from './store/actions/webmaster/getWebmaster';
-
+import { ThemeProvider } from '@mui/material/styles';
+import { dashboardTheme } from './dashboardTheme';
 const App = () => {
 
   const dispatch = useDispatch();
@@ -19,9 +20,11 @@ const App = () => {
   dispatch(getLecturers());
   dispatch(getWebmaster());
   return (
-    <div className="App">
-      <MainApp />
-    </div>
+    <ThemeProvider theme={dashboardTheme}>
+      <div className="App">
+        <MainApp />
+      </div>
+    </ThemeProvider>
   );
 }
 export default App;

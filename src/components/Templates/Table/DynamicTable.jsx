@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './DynamicTable.css';
+import { Box } from '@mui/material';
 
 export const DynamicTable = ({ data, onButtonClickDelete, onButtonClickUpdate, onButtonClickGetProperties,onButtonClickAdd }) => {
   if (!data || data.length === 0) {
@@ -9,6 +10,9 @@ export const DynamicTable = ({ data, onButtonClickDelete, onButtonClickUpdate, o
   const keys = Object.keys(data[0]);
 
   return (
+    <Box className="h-full float-right"
+    sx={{width:'88%'}}>
+
     <table className="dynamic-table">
       <thead>
         <tr>
@@ -44,6 +48,7 @@ export const DynamicTable = ({ data, onButtonClickDelete, onButtonClickUpdate, o
         ))}
       </tbody>
     </table>
+    </Box>
   );
 };
 

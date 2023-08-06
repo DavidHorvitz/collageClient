@@ -2,7 +2,7 @@ import React, {  useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { editLecturer } from "../../../store/actions/lecturer/editLecturer";
-import { LecturerForm } from "../../Templates/Forms/LecturerForm";
+import { LecturerForm } from "../../Forms/LecturerForm";
 const EditLecturer = () => {
     const { id } = useParams();
     const navigate = useNavigate();

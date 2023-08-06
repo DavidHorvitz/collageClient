@@ -3,10 +3,10 @@ import './loginScreen.css';
 import { useDispatch, useSelector } from "react-redux";
 import { getWebmaster } from '../../store/actions/webmaster/getWebmaster';
 import Header from '../Templates/Wrapper/Header';
-import Aside from '../Templates/Wrapper/Aside';
+import Navbar from '../Templates/Wrapper/Navbar/Navbar';
+// import Aside from '../Templates/Wrapper/Aside';
 import Main from '../Templates/Wrapper/Main';
 import useIdleTimeout from '../useIdleTimeout/useIdleTimeout';
-
 const LoginScreen = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -39,12 +39,12 @@ const LoginScreen = () => {
     return (
       <div>
         <Header />
-        <Aside />
+        <Navbar />
         <Main />
       </div>
     );
   }
-  
+
   return (
     <div className="login-container">
       <div className="login-cube">

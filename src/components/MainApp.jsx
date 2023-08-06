@@ -1,9 +1,8 @@
-import './mainApp.css';
 import LoginScreen from './LoginScreen/LoginScreen';
 
 export const MainApp = () => {
     return (
-        <div>
+        <div >
             <LoginScreen/>
         </div>
     );
