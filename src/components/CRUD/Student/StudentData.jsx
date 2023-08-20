@@ -17,18 +17,10 @@ export const HandlerAddStudentToCourse = (id) => {
 export const StudentData = () => {
     //the state => state.student.students came from the store state in the index file
     const navigate = useNavigate();
-    const students = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
+    const studentsArray = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
     const dispatch = useDispatch();
     const [confirmDelete, setConfirmDelete] = useState(false);
     const [selectedStudentId, setSelectedStudentId] = useState(null);
-
-    const tableData = students.map(student => ({
-        Id: student.Id,
-        Name: student.Name,
-        Phone_Number: student.PhoneNumber,
-        Email: student.Email,
-    }));
-
 
     const handleDeleteStudentItem = (id) => {
         setSelectedStudentId(id);
@@ -54,14 +46,6 @@ export const StudentData = () => {
         setSelectedStudentId(null);
     };
 
-    const handleUpdateStudent = (id, data) => {
-        navigate(`/edit-student/${id}`, {
-            state: {
-                data: data,
-            }
-        });
-    };
-
     const handlerStudentCourses = (id, data) => {
         dispatch(getStudentWithCourses(id))
             .then(() => {
@@ -82,10 +66,8 @@ export const StudentData = () => {
         <div>
             <h1>Student details</h1>
             <DynamicCard
-                data={tableData}
+                data={studentsArray}
                 onButtonClickDelete={(student) => handleDeleteStudentItem(student.Id)}
-                onButtonClickUpdate={(student) => handleUpdateStudent(student.Id, student)}
-                // onButtonClickAdd={(student) => HandlerAddStudentToCourse(student.Id)}
                 onButtonClickGetProperties={(student) => handlerStudentCourses(student.Id, student)}
             />
             {confirmDelete && (

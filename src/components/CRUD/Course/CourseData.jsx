@@ -4,23 +4,17 @@ import { DynamicTable } from "../../Templates/Table/DynamicTable";
 import { useNavigate } from "react-router-dom";
 import { deleteCourse } from "../../../store/actions/course/deleteCourse";
 import DeleteConfirmation from "../../Templates/DeleteConfirmation/DeleteConfirmation";
+import DynamicCard from "../../Templates/DynamicCard/DynamicCard";
+import { getCourseWithStudents } from "../../../store/actions/course/getCoursesWithStudents";
 
 export const CourseData = () => {
-  const courses = useSelector((state) => state.course.courses);
+  const coursesArray = useSelector((state) => state.course.courses);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [selectedCourseId, setSelectedCourseId] = useState(null);
 
-  const tableData = courses.map((course) => ({
-    Id: course.Id,
-    Course_Name: course.CourseName,
-    Starting_Date: course.StartingDate,
-    End_Date: course.EndDate,
-    Minimum_Passing_Score: course.MinimumPassingScore,
-    Maximum_Students: course.MaximumStudents,
-    IsReady: course.IsReady,
-  }));
+
 
   const deleteCourseItem = (id) => {
     setSelectedCourseId(id);
@@ -53,14 +47,29 @@ export const CourseData = () => {
       },
     });
   };
+  const handlerCourseStudents = (id, data) => {
+    dispatch(getCourseWithStudents(id))
+      .then(() => {
+        navigate(`/course-with-students/${id}`, {
+          state: {
+            data: data,
+            courseId: id
+          }
+        });
+      })
+      .catch((err) => {
+        console.error('Failed to add student:', err);
+      });
+  }
 
   return (
     <div>
       <h1>Courses details</h1>
-      <DynamicTable
-        data={tableData}
+      <DynamicCard
+        data={coursesArray}
         onButtonClickDelete={(course) => deleteCourseItem(course.Id)}
-        onButtonClickUpdate={(course) => updateCourse(course.Id, course)}
+        onButtonClickGetProperties={(course) => handlerCourseStudents(course.Id, course)}
+
       />
       {confirmDelete && (
         <DeleteConfirmation

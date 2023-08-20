@@ -27,7 +27,7 @@ const AddStudentToCourse = () => {
     // Pass the student ID and the selected course ID to the API
     dispatch(addStudentToCourse({ courseId, studentId: id }))
       .then(() => {
-        navigate("/");
+        navigate("/all-courses");
       })
       .catch((err) => {
         console.error("Failed to add student:", err);

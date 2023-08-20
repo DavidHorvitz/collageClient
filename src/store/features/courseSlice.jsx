@@ -4,6 +4,7 @@ import { addStudentToCourse } from '../actions/course/addStudentToCourse';
 import { addCourse } from '../actions/course/setCourse';
 import { deleteCourse } from '../actions/course/deleteCourse';
 import { editCourse } from '../actions/course/editCourse';
+import { getCourseWithStudents } from '../actions/course/getCoursesWithStudents';
 
 
 
@@ -12,7 +13,7 @@ const courseSlice = createSlice({
   name: 'courses',
   initialState: {
     courses: [],
-    courseWithStudents: [],
+    courseWithStudents: null,
     course: null,
     loading: false,
     error: null
@@ -28,6 +29,14 @@ const courseSlice = createSlice({
         state.courses = action.payload; // fix the typo here
       })
       .addCase(getCourses.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getCourseWithStudents.fulfilled, (state, action) => {
+        state.loading = false;
+        state.courseWithStudents = action.payload; // Store the received student object directly
+      })
+      .addCase(getCourseWithStudents.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

@@ -9,8 +9,8 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     return (
-        
-        <Drawer 
+
+        <Drawer
             variant="permanent"
             anchor="left" >
             <Tooltip title="Back to the Home page">
@@ -19,38 +19,45 @@ const Navbar = () => {
                 </Button>
             </Tooltip>
             <Divider />
-            <List sx={{ color: 'primary.main' }} >
-                {tableNavbarItems.map((item, index) => (
-                    <ListItemButton
-                        button
-                        key={item.id}
-                        onClick={() => navigate(item.route)} >
-                        <ListItemIcon
-                        >
-                            {item.icon}
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={item.label} />
-                    </ListItemButton>
-                ))}
-            </List>
-            <Divider />
-            <List sx={{ color: 'primary.main' }} >
-                {addNavbarItems.map((item, index) => (
-                    <ListItemButton
-                        button
-                        key={item.id}
-                        onClick={() => navigate(item.route)} >
-                        <ListItemIcon
-                        >
-                            {item.icon}
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={item.label} />
-                    </ListItemButton>
-                ))}
-            </List>
-        </Drawer>
+            <div className='bg-gray-100'>
+                {/* <List sx={{ color: 'primary.main' }} > */}
+                    {tableNavbarItems.map((item, index) => (
+                        <div className={`${item.bgColorClass}`}>
+
+                            <ListItemButton
+                                button
+                                key={item.id}
+                                onClick={() => navigate(item.route)} >
+                                <ListItemIcon
+                                >
+                                    {item.icon}
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary={item.label} />
+                            </ListItemButton>
+                        </div>
+                    ))}
+                {/* </List> */}
+                <Divider />
+                {/* <List sx={{ color: 'primary.main' }} > */}
+                    {addNavbarItems.map((item, index) => (
+                        <div className={`${item.bgColorClass}`}>
+                            <ListItemButton
+                                button
+                                key={item.id}
+                                onClick={() => navigate(item.route)} >
+                                <ListItemIcon
+                                >
+                                    {item.icon}
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary={item.label} />
+                            </ListItemButton>
+                        </div>
+                    ))}
+                {/* </List> */}
+            </div>
+        </Drawer >
     );
 };
 

@@ -13,8 +13,13 @@ import { LecturerData } from "../../CRUD/Lecturer/LecturerData";
 import AddLecturer from "../../CRUD/Lecturer/AddLecturer";
 import EditLecturer from "../../CRUD/Lecturer/EditLecturer";
 import AdminCodeChecker from "../../AdminCodeChecker/AdminCodeChecker";
-import CardProperties from "../CardProperties/CardProperties";
+import { CourseWithStudents } from "../../CRUD/Course/CourseWithStudents";
+import { RoomData } from "../../CRUD/Room/RoomData";
+import AddRoom from "../../CRUD/Room/AddRoom";
+import { SyllabusData } from "../../CRUD/Syllabus/SyllabusData";
+import AddSyllabus from "../../CRUD/Syllabus/AddSyllabus";
 import { Box } from "@mui/material";
+
 const Main = () => {
     
     return (
@@ -25,18 +30,23 @@ const Main = () => {
                 <Route path="/all-students" element={<StudentData />} />
                 <Route path="/all-courses" element={<CourseData />} />
                 <Route path="/all-lecturers" element={<LecturerData />} />
+                <Route path="/all-rooms" element={<RoomData />} />
                 <Route path="/all-webmasters" element={<AdminCodeChecker />} />
+                <Route path="/all-syllabuses" element={<SyllabusData />} />
 
                 <Route path="/add-student" element={<AddStudent />} />
                 <Route path="/add-lecturer" element={<AddLecturer />} />
                 <Route path="/add-course" element={<AddCourse />} />
                 <Route path="/add-webmaster" element={<AdminCodeChecker />} />
+                <Route path="/add-room" element={<AddRoom />} />
+                <Route path="/add-syllabus" element={<AddSyllabus />} />
 
                 <Route path="/edit-student/:id" element={<EditStudent />} />
                 <Route path="/edit-course/:id" element={<EditCourse />} />
                 <Route path="/edit-lecturer/:id" element={<EditLecturer />} />
 
                 <Route path="/student-with-courses/:id" element={<StudentWithCourses />} />
+                <Route path="/course-with-students/:id" element={<CourseWithStudents />} />
                 <Route path="/add-student-to-course/:id" element={<AddStudentToCourse />} />
             </Routes>
         </Box>

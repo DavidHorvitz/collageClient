@@ -9,28 +9,31 @@ export default function DynamicCard({ data, onButtonClickDelete,onButtonClickGet
     if (!data || data.length === 0) {
         return <p>No data to display.</p>;
     }
+    const keys = Object.keys(data[0]);
     return (
         <div className="flex space-x-10 float-right shadow-inner">
             {data.map((item, index) => (
-                <Card key={index} sx={{ maxWidth: 345 }}>
+                <Card key={index} sx={{ maxWidth: 500 }}>
+                    
                     <CardMedia
-                        sx={{ height: 140 }}
+                        sx={{ height: 100 }}
                         image={item.ImageProfile}
                         title="Image Profile"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            <span>Name: </span>
-                            {item.Name}
+                            <span>{keys[1]} :  </span>
+                            {item[keys[1]]}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            <span>Phone: </span>
-                            {item.Phone_Number}
+                            <span>{keys[2]} :  </span>
+                            {item[keys[2]]}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            <span>Email: </span>
-                            {item.Email}
+                            <span>{keys[3]} :  </span>
+                            {item[keys[3]]}
                         </Typography>
+                     
                     </CardContent>
                     <CardActions>
                         <Button size="small" onClick={() => onButtonClickGetProperties(item)}>More</Button>
@@ -41,5 +44,4 @@ export default function DynamicCard({ data, onButtonClickDelete,onButtonClickGet
         </div>
     );
 }
-
 

@@ -49,6 +49,7 @@ const LoginScreen = () => {
     <div className="login-container">
       <div className="login-cube">
         <h1>Welcome to College Administration System</h1>
+        
         <form onSubmit={handleLogin}>
           <label htmlFor="username">Username:</label>
           <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} />

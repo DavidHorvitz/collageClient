@@ -8,6 +8,8 @@ import { getLecturers } from './store/actions/lecturer/getLecturer';
 import { getWebmaster } from './store/actions/webmaster/getWebmaster';
 import { ThemeProvider } from '@mui/material/styles';
 import { dashboardTheme } from './dashboardTheme';
+import { getRooms } from './store/actions/room/getRoom';
+import { getSyllabuses } from './store/actions/syllabus/getSyllabus';
 const App = () => {
 
   const dispatch = useDispatch();
@@ -19,6 +21,9 @@ const App = () => {
   dispatch(getCourses());
   dispatch(getLecturers());
   dispatch(getWebmaster());
+  dispatch(getRooms());
+  dispatch(getSyllabuses());
+
   return (
     <ThemeProvider theme={dashboardTheme}>
       <div className="App">

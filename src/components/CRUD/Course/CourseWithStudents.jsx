@@ -7,24 +7,24 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { deleteStudent } from "../../../store/actions/student/deleteStudent";
 import { useLocation, useNavigate } from "react-router-dom";
 import DeleteConfirmation from "../../Templates/DeleteConfirmation/DeleteConfirmation";
+import { deleteCourse } from "../../../store/actions/course/deleteCourse";
 
-export const StudentWithCourses = () => {
-    const loading = useSelector((state) => state.student.loading);
-    const error = useSelector((state) => state.student.error);
-    const studentCourses = useSelector(state => state.student.studentCourses);
-    const students = useSelector(state => state.student.students);
+export const CourseWithStudents = () => {
+    const loading = useSelector((state) => state.course.loading);
+    const error = useSelector((state) => state.course.error);
+    const courseStudents = useSelector(state => state.course.courseWithStudents);
+    const courses = useSelector(state => state.course.courses);
     const location = useLocation();
-    const studentId = location.state.data.Id;
+    const courseId = location.state.data.Id;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [showDeleteConfirmation, setShowDeleteConfirmation] = React.useState(false);
-    const selectedStudent = students.find(student => student.Id === studentId);
+    const selectedCourses = courses.find(course => course.Id === courseId);
 
-    if (!studentCourses) {
-        return <h1>No student data available for the selected ID.</h1>;
+    if (!courseStudents) {
+        return <h1>No course data available for the selected ID.</h1>;
     }
     if (loading) {
         return <Spinner />;
@@ -37,26 +37,26 @@ export const StudentWithCourses = () => {
         setShowDeleteConfirmation(true);
     };
 
-    const handleDeleteStudentItem = () => {
-        dispatch(deleteStudent(studentId))
+    const handleDeleteCourseItem = () => {
+        dispatch(deleteCourse(courseId))
             .then(() => {
-                navigate("/all-students");
+                navigate("/all-courses");
             })
             .catch((err) => {
                 console.error("Failed to Delete Course:", err);
             })
     }
-    const handleUpdateStudent = () => {
-        navigate(`/edit-student/${studentId}`, {
+    const handleUpdateCourse = () => {
+        navigate(`/edit-course/${courseId}`, {
             state: {
-                data: selectedStudent,
+                data: selectedCourses,
             }
         });
     };
 
-    const HandlerAddStudentToCourse = () => {
-        navigate(`/add-student-to-course/${studentId}`)
-    };
+    // const HandlerAddStudentToCourse = () => {
+    //     navigate(`/add-student-to-course/${courseId}`)
+    // };
 
     return (
         <Card className="h-full float-right" sx={{ width: '100%' }}>
@@ -67,20 +67,20 @@ export const StudentWithCourses = () => {
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {studentCourses.Name}
+                    {courseStudents.CourseName}
                 </Typography>
-                {studentCourses.Courses && studentCourses.Courses.length > 0 && ( // Check if courses exist
+                {courseStudents.Students && courseStudents.Students.length > 0 && ( // Check if courses exist
                     <div>
-                        {studentCourses.Courses.map((course) => (
-                            <div key={course.Id}>
+                        {courseStudents.Students.map((student) => (
+                            <div key={student.Id}>
                                 <Typography variant="body2" color="text.secondary">
-                                    Course Name : {course.CourseName}
+                                     Name : {student.Name}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                    Starting Date : {course.StartingDate}
+                                   Email : {student.Email}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                    End Date : {course.EndDate}
+                                Phone Number : {student.PhoneNumber}
                                 </Typography>
                             </div>
                         ))}
@@ -89,11 +89,11 @@ export const StudentWithCourses = () => {
             </CardContent>
             <CardActions>
                 <Button size="small" onClick={handleDeleteButtonClick}>Delete Item</Button>
-                <Button size="small" onClick={() => HandlerAddStudentToCourse()}>Add Student to Course</Button>
-                <Button size="small" onClick={() => handleUpdateStudent()}>Edit Student</Button>
-                <Button size="small" onClick={() => navigate("/all-students")}>Back</Button>
+                {/* <Button size="small" onClick={() => HandlerAddStudentToCourse()}>Add Student to Course</Button> */}
+                <Button size="small" onClick={() => handleUpdateCourse()}>Edit Course</Button>
+                <Button size="small" onClick={() => navigate("/all-courses")}>Back</Button>
                 {showDeleteConfirmation && (
-                    <DeleteConfirmation onCancel={() => setShowDeleteConfirmation(false)} onConfirm={handleDeleteStudentItem} />
+                    <DeleteConfirmation onCancel={() => setShowDeleteConfirmation(false)} onConfirm={handleDeleteCourseItem} />
                 )}
             </CardActions>
         </Card>

@@ -11,13 +11,16 @@ import studentReducer from './store/features/studentSlice';
 import courseReducer from './store/features/courseSlice';
 import lecturerReducer from './store/features/lecturerSlice'
 import webmasterSlice from './store/features/webmasterSlice';
-
+import roomSlice from './store/features/roomSlice';
+import syllabusSlice from './store/features/syllabusSlice';
 const store = configureStore({//here I initialize the global store state
   reducer: {
     student: studentReducer,
     course: courseReducer,
     lecturer: lecturerReducer,
     webmaster: webmasterSlice,
+    room: roomSlice,
+    syllabus: syllabusSlice,
     middleware: [thunk],
   }
 });
@@ -25,9 +28,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>
 );
