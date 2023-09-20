@@ -15,6 +15,7 @@ const EditStudent = () => {
 
     const [Name, setName] = useState(data.Name);
     const [PhoneNumber, setPhoneNumber] = useState(data.PhoneNumber);
+    const [ImageProfile, setImageProfile] = useState(data.ImageProfile);
     const [Email, setEmail] = useState(data.Email);
 
 
@@ -24,6 +25,7 @@ const EditStudent = () => {
             Name: Name,
             PhoneNumber: PhoneNumber,
             Email: Email,
+            ImageProfile: ImageProfile
         };
         //here i sand to the API request an object with tow properties, id to the url and the data that will be changed
         //you can see that in editStudent Api
@@ -44,6 +46,8 @@ const EditStudent = () => {
                 setName={setName}
                 PhoneNumber={PhoneNumber}
                 setPhoneNumber={setPhoneNumber}
+                ImageProfile={ImageProfile}
+                setImageProfile={setImageProfile}
                 Email={Email}
                 setEmail={setEmail}
                 saveData={saveUpdateData}

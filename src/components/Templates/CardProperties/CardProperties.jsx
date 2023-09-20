@@ -18,8 +18,8 @@ export const CardProperties = ({ data }) => {
   return (
     <div className=" h-full  space-y-5 pr-5 pl-5 float-right shadow-inner">
       {data.map((item, index) => (
-        <Card className="border" sx={{ width: '100%' }}>
-         
+        <Card key={index} className="border" sx={{ width: '100%' }}>
+
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" >
               <div className="text-left">

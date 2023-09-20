@@ -7,12 +7,13 @@ import { addCourse } from "../../../store/actions/course/setCourse";
 const AddCourse = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
- 
+
     const [CourseName, setCourseName] = useState('');
     const [StartingDate, setStartingDate] = useState('');
     const [EndDate, setEndDate] = useState('');
     const [MinimumPassingScore, setMinimumPassingScore] = useState('');
     const [MaximumStudents, setMaximumStudents] = useState('');
+    const [Image, setImage] = useState('');
 
     const updatedStudent = {
         CourseName: CourseName,
@@ -20,6 +21,7 @@ const AddCourse = () => {
         EndDate: EndDate,
         MinimumPassingScore: MinimumPassingScore,
         MaximumStudents: MaximumStudents,
+        Image: Image
     };
     const saveData = () => {
         dispatch(addCourse(updatedStudent))
@@ -34,16 +36,18 @@ const AddCourse = () => {
         <div>
             <h1>Add Course</h1>
             <CourseForm
-                 CourseName={CourseName}
-                 setCourseName={setCourseName}
-                 StartingDate={StartingDate}
-                 setStartingDate={setStartingDate}
-                 EndDate={EndDate}
-                 setEndDate={setEndDate}
-                 MinimumPassingScore={MinimumPassingScore}
-                 setMinimumPassingScore={setMinimumPassingScore}
-                 MaximumStudents={MaximumStudents}
-                 setMaximumStudents={setMaximumStudents}
+                CourseName={CourseName}
+                setCourseName={setCourseName}
+                StartingDate={StartingDate}
+                setStartingDate={setStartingDate}
+                EndDate={EndDate}
+                setEndDate={setEndDate}
+                MinimumPassingScore={MinimumPassingScore}
+                setMinimumPassingScore={setMinimumPassingScore}
+                MaximumStudents={MaximumStudents}
+                setMaximumStudents={setMaximumStudents}
+                Image={Image}
+                setImage={setImage}
                 saveData={saveData} />
 
         </div>

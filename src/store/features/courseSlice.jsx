@@ -5,6 +5,7 @@ import { addCourse } from '../actions/course/setCourse';
 import { deleteCourse } from '../actions/course/deleteCourse';
 import { editCourse } from '../actions/course/editCourse';
 import { getCourseWithStudents } from '../actions/course/getCoursesWithStudents';
+import { getCountCourses } from '../actions/course/getCourseCount';
 
 
 
@@ -15,6 +16,7 @@ const courseSlice = createSlice({
     courses: [],
     courseWithStudents: null,
     course: null,
+    countCourses: null,
     loading: false,
     error: null
   },
@@ -29,6 +31,17 @@ const courseSlice = createSlice({
         state.courses = action.payload; // fix the typo here
       })
       .addCase(getCourses.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getCountCourses.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getCountCourses.fulfilled, (state, action) => {
+        state.loading = false;
+        state.countCourses = action.payload; // fix the typo here
+      })
+      .addCase(getCountCourses.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

@@ -8,20 +8,11 @@ import DynamicCard from "../../Templates/DynamicCard/DynamicCard";
 
 
 export const WebmasterData = () => {
-    const webmaster = useSelector(state => state.webmaster.webmasters);//like this i can access to the specific students state in the reducer 
+    const webmasterArray = useSelector(state => state.webmaster.webmasters);//like this i can access to the specific students state in the reducer 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [confirmDelete, setConfirmDelete] = useState(false);
     const [selectedCourseId, setSelectedCourseId] = useState(null);
-
-    const tableData = webmaster.map(webmaster => ({
-        Id: webmaster.Id,
-        Name: webmaster.Name,
-        Phone_Number: webmaster.PhoneNumber,
-        Email: webmaster.Email,
-        Password: webmaster.Password
-    }));
-
     const deleteWebmasterItem = (id) => {
         setSelectedCourseId(id);
         setConfirmDelete(true);
@@ -59,7 +50,7 @@ export const WebmasterData = () => {
         <div>
             <h1>Webmaster details</h1>
             <DynamicCard
-                data={tableData}
+                data={webmasterArray}
                 onButtonClickDelete={(webmaster) => deleteWebmasterItem(webmaster.Id)}
                 onButtonClickUpdate={(webmaster) => updateWebmaster(webmaster.Id, webmaster)}
             />

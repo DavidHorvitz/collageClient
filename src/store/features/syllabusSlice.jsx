@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getSyllabuses } from '../actions/syllabus/getSyllabus';
 import { addSyllabus } from '../actions/syllabus/setSyllabus';
+import { getCountSyllabuses } from '../actions/syllabus/getCountSyllabuses';
 const syllabusesSlice = createSlice({
   name: 'syllabuses',
   initialState: {
-    syllabuses: [], 
-    syllabus: null, 
+    syllabuses: [],
+    syllabus: null,
+    countSyllabuses: null,
     loading: false,
     error: null,
   },
@@ -23,11 +25,22 @@ const syllabusesSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
+      .addCase(getCountSyllabuses.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getCountSyllabuses.fulfilled, (state, action) => {
+        state.loading = false;
+        state.countSyllabuses = action.payload;
+      })
+      .addCase(getCountSyllabuses.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
       .addCase(addSyllabus.fulfilled, (state, action) => {
         state.loading = false;
         state.syllabuses.push(action.payload);
       })
-   .addMatcher(
+      .addMatcher(
         (action) =>
           action.type.endsWith('/pending') || action.type.endsWith('/rejected'),
         (state) => {

@@ -1,56 +1,3 @@
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { useDispatch } from "react-redux";
-// import { addWebmaster } from "../../../store/actions/webmaster/setWebmaster";
-// import { WebmasterForm } from "../../Templates/Forms/WebmasterForm";
-// const AddWebmaster = () => {
-//     const dispatch = useDispatch();
-//     const navigate = useNavigate();
-
-//     const [Name, setName] = useState('');
-//     const [PhoneNumber, setPhoneNumber] = useState('');
-//     const [Email, setEmail] = useState('');
-//     const [Password, setPassword] = useState('');
-
-
-//     const saveData = () => {
-
-//         const objData = {
-//             Name: Name,
-//             PhoneNumber: PhoneNumber,
-//             Email: Email,
-//             Password: Password
-//         };
-
-//         dispatch(addWebmaster(objData))
-//             .then(() => {
-//                 navigate('/all-webmasters');
-//             })
-//             .catch((err) => {
-//                 console.error('Failed to add student:', err);
-//             });
-//     };
-
-//     return (
-//         <div>
-//             <h1>Add Webmaster</h1>
-//             <WebmasterForm
-//                 Name={Name}
-//                 setName={setName}
-//                 PhoneNumber={PhoneNumber}
-//                 setPhoneNumber={setPhoneNumber}
-//                 Email={Email}
-//                 setEmail={setEmail}
-//                 Password={Password}
-//                 setPassword={setPassword}
-//                 saveData={saveData}
-//             />
-//         </div>
-//     );
-// };
-
-// export default AddWebmaster;
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -65,6 +12,7 @@ const AddWebmaster = () => {
   const [Name, setName] = useState('');
   const [PhoneNumber, setPhoneNumber] = useState('');
   const [Email, setEmail] = useState('');
+  const [ImageProfile, setImageProfile] = useState('');
   const [Password, setPassword] = useState('');
 
   const saveData = () => {
@@ -72,6 +20,7 @@ const AddWebmaster = () => {
       Name: Name,
       PhoneNumber: PhoneNumber,
       Email: Email,
+      ImageProfile: ImageProfile,
       Password: Password
     };
 
@@ -88,20 +37,20 @@ const AddWebmaster = () => {
 
   return (
     <div>
-          <h1>Add Webmaster</h1>
-          <WebmasterForm
-            Name={Name}
-            setName={setName}
-            PhoneNumber={PhoneNumber}
-            setPhoneNumber={setPhoneNumber}
-            Email={Email}
-            setEmail={setEmail}
-            Password={Password}
-            setPassword={setPassword}
-            saveData={saveData}
-          />
-    
-      
+      <h1>Add Webmaster</h1>
+      <WebmasterForm
+        Name={Name}
+        setName={setName}
+        PhoneNumber={PhoneNumber}
+        setPhoneNumber={setPhoneNumber}
+        Email={Email}
+        setEmail={setEmail}
+        ImageProfile={ImageProfile}
+        setImageProfile={setImageProfile}
+        Password={Password}
+        setPassword={setPassword}
+        saveData={saveData}
+      />
     </div>
   );
 };

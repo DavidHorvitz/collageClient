@@ -9,20 +9,20 @@ import DynamicCard from "../../Templates/DynamicCard/DynamicCard";
 
 
 export const LecturerData = () => {
-  const lecturers = useSelector(state => state.lecturer.lecturers);
+  const lecturersArray = useSelector(state => state.lecturer.lecturers);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [selectedLecturerId, setSelectedLecturerId] = useState(null);
 
-  const tableData = lecturers.map(lecturer => ({
-    Id: lecturer.Id,
-    Name: lecturer.Name,
-    Phone_Number: lecturer.PhoneNumber,
-    Email: lecturer.Email,
-    ImageProfile: lecturer.ImageProfile
-  }));
+  // const tableData = lecturersArray.map(lecturer => ({
+  //   Id: lecturer.Id,
+  //   Name: lecturer.Name,
+  //   Phone_Number: lecturer.PhoneNumber,
+  //   Email: lecturer.Email,
+  //   ImageProfile: lecturer.ImageProfile
+  // }));
 
   const deleteLecturerItem = (id) => {
     setSelectedLecturerId(id);
@@ -59,7 +59,7 @@ export const LecturerData = () => {
     <div>
       <h1>Lecturer details</h1>
       <DynamicCard
-        data={tableData}
+        data={lecturersArray}
         onButtonClickDelete={(lecturer) => deleteLecturerItem(lecturer.Id)}
         onButtonClickUpdate={(lecturer) => updateLecturer(lecturer.Id, lecturer)}
       />

@@ -4,6 +4,7 @@ import { getStudentWithCourses } from '../actions/student/getStudentWithCourses'
 import { addStudent } from '../actions/student/setStudent';
 import { editStudent } from '../actions/student/editStudent';
 import { deleteStudent } from '../actions/student/deleteStudent';
+import { getCountStudents } from '../actions/student/getCountStudents';
 
 const studentsSlice = createSlice({
   name: 'students',
@@ -11,6 +12,7 @@ const studentsSlice = createSlice({
     students: [], // An array to store all students along with their courses
     studentCourses: null,//An Object to store a single student with its course
     student: null, // Store the student object with courses directly here
+    countStudents: null,
     loading: false,
     error: null,
   },
@@ -25,6 +27,17 @@ const studentsSlice = createSlice({
         state.students = action.payload;
       })
       .addCase(getStudents.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getCountStudents.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getCountStudents.fulfilled, (state, action) => {
+        state.loading = false;
+        state.countStudents = action.payload;
+      })
+      .addCase(getCountStudents.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

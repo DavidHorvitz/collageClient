@@ -63,7 +63,7 @@ export const CourseWithStudents = () => {
             <CardMedia sx={{ height: '300px', width: '30%' }}
                 component="img"
                 alt="green iguana"
-                image="https://images.squarespace-cdn.com/content/v1/5a7c0544d74cffa3a6ce66b3/1630183781197-HDM6VZNPNANFZIYPJUI5/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA+%D7%A0%D7%95%D7%A3+-+%D7%A9%D7%95%D7%95%D7%99%D7%A5.jpg"
+                image={courseStudents.Image}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
@@ -74,13 +74,13 @@ export const CourseWithStudents = () => {
                         {courseStudents.Students.map((student) => (
                             <div key={student.Id}>
                                 <Typography variant="body2" color="text.secondary">
-                                     Name : {student.Name}
+                                    Name : {student.Name}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                   Email : {student.Email}
+                                    Email : {student.Email}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                Phone Number : {student.PhoneNumber}
+                                    Phone Number : {student.PhoneNumber}
                                 </Typography>
                             </div>
                         ))}

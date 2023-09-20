@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentWithCourses } from "../../../store/actions/student/getStudentWithCourses";
 import DeleteConfirmation from "../../Templates/DeleteConfirmation/DeleteConfirmation";
 import { deleteStudent } from "../../../store/actions/student/deleteStudent";
 import DynamicCard from "../../Templates/DynamicCard/DynamicCard";
-import { DynamicTable } from "../../Templates/Table/DynamicTable";
+// import { DynamicTable } from "../../Templates/Table/DynamicTable";
+import { getStudents } from "../../../store/actions/student/getStudent";
 
 
 export const HandlerAddStudentToCourse = (id) => {
@@ -15,10 +16,11 @@ export const HandlerAddStudentToCourse = (id) => {
 
 
 export const StudentData = () => {
-    //the state => state.student.students came from the store state in the index file
-    const navigate = useNavigate();
-    const studentsArray = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    //the state => state.student.students came from the store state in the index file
+    const studentsArray = useSelector(state => state.student.students);//like this i can access to the specific students state in the reducer 
     const [confirmDelete, setConfirmDelete] = useState(false);
     const [selectedStudentId, setSelectedStudentId] = useState(null);
 

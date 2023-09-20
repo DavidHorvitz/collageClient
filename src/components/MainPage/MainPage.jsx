@@ -1,12 +1,23 @@
+import { useSelector } from "react-redux";
 
 export const MainPage = () => {
-
+  const countCourses = useSelector((state) => state.course.countCourses);
+  const countStudents = useSelector((state) => state.student.countStudents);
+  const countLecturers = useSelector((state) => state.lecturer.countLecturers);
+  const countSyllabuses = useSelector((state) => state.syllabus.countSyllabuses);
+  const countRooms = useSelector((state) => state.room.countRooms);
 
   return (
     <div>
-      <h1>Welcome to the college administration website</h1>
+      <h1>Welcome to the college administration website
+      </h1>
       <h2 className="font-bold border text-2xl	">Written by David Horvitz</h2>
       <div>
+        <h2 className="font-bold border text-2xl text-left text-orange-300	">The count of all Courses is : {countCourses.count}</h2>
+        <h2 className="font-bold border text-2xl text-left text-orange-400	">The count of all Students is : {countStudents.count}</h2>
+        <h2 className="font-bold border text-2xl text-left text-orange-500	">The count of all Lecturers is : {countLecturers.count}</h2>
+        <h2 className="font-bold border text-2xl text-left text-orange-600	">The count of all Syllabuses is : {countSyllabuses.count}</h2>
+        <h2 className="font-bold border text-2xl text-left text-orange-700	">The count of all Rooms is : {countRooms.count}</h2>
         <h2>
           Here, you have access to a range of administrative tasks related to students, courses, lecturers, and study materials. Our user-friendly interface allows you to effortlessly manage the college's educational ecosystem.
         </h2>
@@ -33,7 +44,7 @@ export const MainPage = () => {
         <div className="text-left ">
           <span className="font-bold" >  Tables :</span>
         </div>
-         
+
 
         Tables:
 

@@ -4,6 +4,7 @@ import { addCourseToLecturer } from '../actions/lecturer/addCourseToLecturer';
 import { addLecturer } from '../actions/lecturer/setLecturer';
 import { deleteLecturer } from '../actions/lecturer/deleteLecturer';
 import { editLecturer } from '../actions/lecturer/editLecturer';
+import { getCountLecturer } from '../actions/lecturer/getCountLecturer';
 
 
 
@@ -14,6 +15,7 @@ const lecturerSlice = createSlice({
         lecturers: [],
         lecturerWithCourses: [],
         lecturer: null,
+        countLecturers: null,
         loading: false,
         error: null
     },
@@ -28,6 +30,17 @@ const lecturerSlice = createSlice({
                 state.lecturers = action.payload; // fix the typo here
             })
             .addCase(getLecturers.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
+            .addCase(getCountLecturer.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(getCountLecturer.fulfilled, (state, action) => {
+                state.loading = false;
+                state.countLecturers = action.payload; // fix the typo here
+            })
+            .addCase(getCountLecturer.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             })

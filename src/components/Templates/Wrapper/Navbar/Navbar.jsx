@@ -9,10 +9,10 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     return (
-
         <Drawer
             variant="permanent"
-            anchor="left" >
+            anchor="left"
+        >
             <Tooltip title="Back to the Home page">
                 <Button onClick={() => navigate("/")} sx={{ height: 70 }} variant="outlined" endIcon={<KeyboardDoubleArrowRightOutlinedIcon color='secondary' />}>
                     Home
@@ -20,45 +20,37 @@ const Navbar = () => {
             </Tooltip>
             <Divider />
             <div className='bg-gray-100'>
-                {/* <List sx={{ color: 'primary.main' }} > */}
-                    {tableNavbarItems.map((item, index) => (
-                        <div className={`${item.bgColorClass}`}>
-
-                            <ListItemButton
-                                button
-                                key={item.id}
-                                onClick={() => navigate(item.route)} >
-                                <ListItemIcon
-                                >
-                                    {item.icon}
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={item.label} />
-                            </ListItemButton>
-                        </div>
-                    ))}
-                {/* </List> */}
+                {tableNavbarItems.map((item, index) => (
+                    <ListItemButton
+                    button="true" // or button={false} depending on your use case
+                    // button={true} // or button={false} depending on your use case
+                        key={item.id}
+                        onClick={() => navigate(item.route)}
+                    >
+                        <ListItemIcon>
+                            {item.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={item.label} />
+                    </ListItemButton>
+                ))}
                 <Divider />
-                {/* <List sx={{ color: 'primary.main' }} > */}
-                    {addNavbarItems.map((item, index) => (
-                        <div className={`${item.bgColorClass}`}>
-                            <ListItemButton
-                                button
-                                key={item.id}
-                                onClick={() => navigate(item.route)} >
-                                <ListItemIcon
-                                >
-                                    {item.icon}
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={item.label} />
-                            </ListItemButton>
-                        </div>
-                    ))}
-                {/* </List> */}
+                {addNavbarItems.map((item, index) => (
+                    <ListItemButton
+                    // button={true} // or button={false} depending on your use case
+                    button="true" // or button={false} depending on your use case
+
+                        key={item.id}
+                        onClick={() => navigate(item.route)}
+                    >
+                        <ListItemIcon>
+                            {item.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={item.label} />
+                    </ListItemButton>
+                ))}
             </div>
-        </Drawer >
+        </Drawer>
     );
 };
 
-export default Navbar
+export default Navbar;

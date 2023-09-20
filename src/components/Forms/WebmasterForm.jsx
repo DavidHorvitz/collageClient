@@ -3,7 +3,7 @@ import ButtonClose from "../Templates/ButtonClose/ButtonClose";
 import { isNameValid, isPhoneNumberValid, isEmailValid, isPasswordValid } from "../../validation/inputValidation";
 import { useNavigate } from "react-router-dom";
 import { Container, TextField } from "@mui/material";
-export const WebmasterForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Email, setEmail, Password, setPassword, saveData }) => {
+export const WebmasterForm = ({ Name, setName, PhoneNumber, setPhoneNumber, ImageProfile, setImageProfile, Email, setEmail, Password, setPassword, saveData }) => {
     const [close, setClose] = useState(true);
     const navigate = useNavigate();
     useEffect(() => {
@@ -37,6 +37,17 @@ export const WebmasterForm = ({ Name, setName, PhoneNumber, setPhoneNumber, Emai
                     {!isPhoneNumberValid(PhoneNumber) && (
                         <span className="error">Please enter a valid phone number.</span>
                     )}
+                </div>
+                <div>
+                    <TextField fullWidth label="Image Profile Url" id="fullWidth"
+                        className={`input_field ${ImageProfile} `}
+                        type="text"
+                        value={ImageProfile}
+                        onChange={(e) => setImageProfile(e.currentTarget.value)}
+                    />
+                    {/* {!isEmailValid(Email) && (
+                    <span className="error">Please enter a valid email address.</span>
+                )} */}
                 </div>
                 <div>
                     <TextField fullWidth label="Email" id="fullWidth"

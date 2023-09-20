@@ -10,7 +10,7 @@ const AddStudentToCourse = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+console.log(id);
   const courses = useSelector((state) => state.course.courses);
 
   const [courseId, setCourseId] = useState("");
@@ -24,14 +24,16 @@ const AddStudentToCourse = () => {
   }, [close, navigate, dispatch]);
 
   const saveData = () => {
+    
     // Pass the student ID and the selected course ID to the API
-    dispatch(addStudentToCourse({ courseId, studentId: id }))
+    dispatch(addStudentToCourse({ courseId, id }))
       .then(() => {
         navigate("/all-courses");
       })
       .catch((err) => {
         console.error("Failed to add student:", err);
       });
+      console.log("StudentId",id);
   };
 
 

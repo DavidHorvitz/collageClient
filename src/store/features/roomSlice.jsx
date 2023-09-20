@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getRooms } from '../actions/room/getRoom';
 import { addRoom } from '../actions/room/setRoom';
+import { getCountRooms } from '../actions/room/getCountRooms';
 
 const roomSlice = createSlice({
   name: 'rooms',
   initialState: {
     rooms: [],
+    countRooms:null,
     room: null,
     loading: false,
     error: null,
@@ -21,6 +23,17 @@ const roomSlice = createSlice({
         state.rooms = action.payload;
       })
       .addCase(getRooms.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(getCountRooms.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getCountRooms.fulfilled, (state, action) => {
+        state.loading = false;
+        state.countRooms = action.payload;
+      })
+      .addCase(getCountRooms.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

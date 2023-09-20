@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { editLecturer } from "../../../store/actions/lecturer/editLecturer";
@@ -12,16 +12,18 @@ const EditLecturer = () => {
     const data = location.state.data;
     const [Name, setName] = useState(data.Name);
     const [PhoneNumber, setPhoneNumber] = useState(data.Phone_Number);
+    const [ImageProfile, setImageProfile] = useState(data.ImageProfile);
     const [Email, setEmail] = useState(data.Email);
 
 
 
     const saveUpdateData = async () => {
-     
+
         const updateDateObject = {
             Name: Name,
             PhoneNumber: PhoneNumber,
             Email: Email,
+            ImageProfile: ImageProfile
         };
         //here i sand to the API request an object with tow properties, id to the url and the data that will be changed
         //you can see that in editStudent Api
@@ -37,17 +39,19 @@ const EditLecturer = () => {
 
     return (
         <div>
-        <h1>Edit Lecturer</h1>
-        <LecturerForm
-            Name={Name}
-            setName={setName}
-            PhoneNumber={PhoneNumber}
-            setPhoneNumber={setPhoneNumber}
-            Email={Email}
-            setEmail={setEmail}
-            saveData={saveUpdateData}
-        />
-    </div>
+            <h1>Edit Lecturer</h1>
+            <LecturerForm
+                Name={Name}
+                setName={setName}
+                PhoneNumber={PhoneNumber}
+                setPhoneNumber={setPhoneNumber}
+                ImageProfile={ImageProfile}
+                setImageProfile={setImageProfile}
+                Email={Email}
+                setEmail={setEmail}
+                saveData={saveUpdateData}
+            />
+        </div>
     )
 };
 export default EditLecturer;

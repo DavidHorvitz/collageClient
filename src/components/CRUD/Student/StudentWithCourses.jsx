@@ -61,18 +61,22 @@ export const StudentWithCourses = () => {
     return (
         <Card className="h-full float-right" sx={{ width: '100%' }}>
             <CardMedia sx={{ height: '300px', width: '30%' }}
+                key={studentCourses.Id}
                 component="img"
                 alt="green iguana"
-                image="https://images.squarespace-cdn.com/content/v1/5a7c0544d74cffa3a6ce66b3/1630183781197-HDM6VZNPNANFZIYPJUI5/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA+%D7%A0%D7%95%D7%A3+-+%D7%A9%D7%95%D7%95%D7%99%D7%A5.jpg"
+                image={studentCourses.ImageProfile}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {studentCourses.Name}
                 </Typography>
-                {studentCourses.Courses && studentCourses.Courses.length > 0 && ( // Check if courses exist
+                {studentCourses.Courses && studentCourses.Courses.length > 0 && (
                     <div>
                         {studentCourses.Courses.map((course) => (
-                            <div key={course.Id}>
+                            <div key={course.Id}> {/* Assign a unique key */}
+                                <Typography variant="body2" color="text.secondary">
+                                    Course Id : {course.Id}
+                                </Typography>
                                 <Typography variant="body2" color="text.secondary">
                                     Course Name : {course.CourseName}
                                 </Typography>

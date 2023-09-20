@@ -11,6 +11,7 @@ const AddStudent = () => {
 
     const [Name, setName] = useState('');
     const [PhoneNumber, setPhoneNumber] = useState('');
+    const [ImageProfile, setImageProfile] = useState('');
     const [Email, setEmail] = useState('');
 
 
@@ -20,6 +21,7 @@ const AddStudent = () => {
             Name: Name,
             PhoneNumber: PhoneNumber,
             Email: Email,
+            ImageProfile: ImageProfile,
         };
 
         dispatch(addStudent(objData))
@@ -41,6 +43,8 @@ const AddStudent = () => {
                 setName={setName}
                 PhoneNumber={PhoneNumber}
                 setPhoneNumber={setPhoneNumber}
+                ImageProfile={ImageProfile}
+                setImageProfile={setImageProfile}
                 Email={Email}
                 setEmail={setEmail}
                 saveData={saveData}

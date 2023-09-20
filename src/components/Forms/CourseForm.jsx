@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 
 export const CourseForm = ({ CourseName, setCourseName, StartingDate, setStartingDate, EndDate, setEndDate,
-  MinimumPassingScore, setMinimumPassingScore, MaximumStudents, setMaximumStudents, saveData }) => {
+  MinimumPassingScore, setMinimumPassingScore, MaximumStudents, setMaximumStudents, Image, setImage, saveData }) => {
   const [close, setClose] = useState(true);
   const navigate = useNavigate();
 
@@ -91,6 +91,17 @@ export const CourseForm = ({ CourseName, setCourseName, StartingDate, setStartin
           {!isMaximumStudentsValid(MaximumStudents) && (
             <span className="error">Please enter a valid Maximum Students.</span>
           )}
+        </div>
+        <div>
+          <TextField fullWidth label="Image Profile Url" id="fullWidth"
+            className={`input_field ${Image} `}
+            type="text"
+            value={Image}
+            onChange={(e) => setImage(e.currentTarget.value)}
+          />
+          {/* {!isEmailValid(Email) && (
+                    <span className="error">Please enter a valid email address.</span>
+                )} */}
         </div>
         <button className="card_button" onClick={() => saveData()}>
           Save A new Course

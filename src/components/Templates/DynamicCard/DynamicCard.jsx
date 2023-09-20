@@ -17,7 +17,8 @@ export default function DynamicCard({ data, onButtonClickDelete,onButtonClickGet
                     
                     <CardMedia
                         sx={{ height: 100 }}
-                        image={item.ImageProfile}
+                        // image={item.ImageProfile}
+                        image={item.ImageProfile || item.Image || null}
                         title="Image Profile"
                     />
                     <CardContent>
